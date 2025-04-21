@@ -855,7 +855,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
       Height = 618
       Align = alRight
       TabOrder = 1
-      ExplicitLeft = 1057
+      ExplicitLeft = 1062
       ExplicitTop = -4
       object lbStatusDataBase: TLabel
         AlignWithMargins = True
@@ -906,22 +906,49 @@ object ChartDatabaseMainView: TChartDatabaseMainView
         Margins.Top = 0
         Align = alTop
         Style = csDropDownList
+        DropDownCount = 16
         TabOrder = 1
         ExplicitLeft = 6
       end
       object btnAlterarChartType: TBitBtn
         AlignWithMargins = True
         Left = 4
-        Top = 171
+        Top = 217
         Width = 150
         Height = 40
         Align = alTop
         Caption = 'Alterar ChartType'
         TabOrder = 2
         OnClick = btnAlterarChartTypeClick
-        ExplicitLeft = 1
-        ExplicitTop = 162
-        ExplicitWidth = 156
+        ExplicitLeft = 6
+        ExplicitTop = 290
+      end
+      object ckMostrarMarcador: TCheckBox
+        AlignWithMargins = True
+        Left = 4
+        Top = 171
+        Width = 150
+        Height = 17
+        Align = alTop
+        Caption = 'Mostrar marcador'
+        Checked = True
+        State = cbChecked
+        TabOrder = 3
+        ExplicitLeft = 6
+      end
+      object ckMostrarLabels: TCheckBox
+        AlignWithMargins = True
+        Left = 4
+        Top = 194
+        Width = 150
+        Height = 17
+        Align = alTop
+        Caption = 'Mostrar label'
+        Checked = True
+        State = cbChecked
+        TabOrder = 4
+        ExplicitLeft = 20
+        ExplicitTop = 263
       end
     end
   end

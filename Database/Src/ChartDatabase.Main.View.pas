@@ -41,6 +41,8 @@ type
     Label1: TLabel;
     cBoxChartType: TComboBox;
     btnAlterarChartType: TBitBtn;
+    ckMostrarMarcador: TCheckBox;
+    ckMostrarLabels: TCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure btnAbrirClick(Sender: TObject);
     procedure btnAlterarChartTypeClick(Sender: TObject);
@@ -87,7 +89,8 @@ begin
 
   ClientDataSet1.FieldDefs.Add('id', ftInteger);
   ClientDataSet1.FieldDefs.Add('data', ftDate);
-  ClientDataSet1.FieldDefs.Add('valor', ftFloat);
+  ClientDataSet1.FieldDefs.Add('valor_ano_passado', ftFloat);
+  ClientDataSet1.FieldDefs.Add('valor_ano_atual', ftFloat);
   ClientDataSet1.CreateDataSet;
 
   i := 10;
@@ -96,7 +99,8 @@ begin
     ClientDataSet1.Append;
     ClientDataSet1.FieldByName('id').AsInteger := i;
     ClientDataSet1.FieldByName('data').AsDateTime := Date - LDiasAtras;
-    ClientDataSet1.FieldByName('valor').AsFloat := Self.GetNumeroAleatorio;
+    ClientDataSet1.FieldByName('valor_ano_passado').AsFloat := Self.GetNumeroAleatorio;
+    ClientDataSet1.FieldByName('valor_ano_atual').AsFloat := Self.GetNumeroAleatorio;
     ClientDataSet1.Post;
   end;
 
@@ -126,11 +130,17 @@ begin
   //SETAMOS PARA FALSE PARA QUE NOS MESMO CRIEMOS AS SERIES
   TMSFNCChartDatabaseAdapter1.AutoCreateSeries := False;
 
-  //ADICIONE UMA SERIE AO ChartDatabaseAdapter
+  //ADICIONE AO ChartDatabaseAdapter A SERIE COM VALORES DO ANO PASSADO
   LSeriesItem := TMSFNCChartDatabaseAdapter1.Source.Series.Add;
-  LSeriesItem.YValue := 'valor';
+  LSeriesItem.YValue := 'valor_ano_passado';
   LSeriesItem.XValue := 'data';
-  LSeriesItem.XLabel := 'Data';
+  LSeriesItem.XLabel := 'data';
+
+  //ADICIONE AO ChartDatabaseAdapter A SERIE COM VALORES DO ANO ATUAL
+  LSeriesItem := TMSFNCChartDatabaseAdapter1.Source.Series.Add;
+  LSeriesItem.YValue := 'valor_ano_atual';
+  LSeriesItem.XValue := 'data';
+  LSeriesItem.XLabel := 'data';
 
   TMSFNCChartDatabaseAdapter1.Active := True;
   lbStatusDataBase.Caption := 'Conectado';
@@ -152,8 +162,18 @@ begin
   //INTERCEPTA A SERIE NO TMSFNCChart1 CASO QUEIRA FAZER ALGUMA ALTERACAO
   LSerieChart := TMSFNCChart1.Series[0];
   LSerieChart.ChartType := TTMSFNCChartSerieType(cBoxChartType.ItemIndex);
-  LSerieChart.LegendText := 'Vendas por dia';
-  LSerieChart.Markers.Visible := True;
+  LSerieChart.LegendText := 'Ano passado';
+  LSerieChart.Markers.Visible := ckMostrarMarcador.Checked;
+  LSerieChart.Labels.Visible := ckMostrarLabels.Checked;
+  LSerieChart.Pie.Stacked := True;
+
+
+  LSerieChart := TMSFNCChart1.Series[1];
+  LSerieChart.ChartType := TTMSFNCChartSerieType(cBoxChartType.ItemIndex);
+  LSerieChart.LegendText := 'Ano Atual';
+  LSerieChart.Markers.Visible := ckMostrarMarcador.Checked;
+  LSerieChart.Labels.Visible := ckMostrarLabels.Checked;
+  LSerieChart.Pie.Stacked := True;
 end;
 
 end.
