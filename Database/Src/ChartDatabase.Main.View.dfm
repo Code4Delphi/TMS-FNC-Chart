@@ -3,7 +3,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
   Top = 0
   Caption = 'TMS FNC Chart - Database'
   ClientHeight = 660
-  ClientWidth = 1215
+  ClientWidth = 1298
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,7 +16,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
   object pnCorpo: TPanel
     Left = 0
     Top = 0
-    Width = 1215
+    Width = 1298
     Height = 620
     Align = alClient
     TabOrder = 0
@@ -27,7 +27,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
     object TMSFNCChart1: TTMSFNCChart
       Left = 1
       Top = 1
-      Width = 1055
+      Width = 1138
       Height = 618
       Appearance.ColorList = <
         item
@@ -66,6 +66,8 @@ object ChartDatabaseMainView: TChartDatabaseMainView
       Appearance.ColorScheme = ccsColorList
       Appearance.MonochromeColor = clSteelblue
       ClickMargin = 10.000000000000000000
+      InteractionOptions.ShowEditors = True
+      InteractionOptions.ShowEditorTypes = [etLegend, etSeries, etTitle, etXAxis, etYAxis, etGeneral]
       Legend.Fill.Kind = gfkSolid
       Legend.Stroke.Kind = gskSolid
       Legend.Font.Charset = DEFAULT_CHARSET
@@ -310,7 +312,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           YValues.Title.TextMargins.Top = 0
           YValues.Title.TextMargins.Right = 0
           YValues.Title.TextMargins.Bottom = 0
-          YValues.Title.Text = 'Y-Axis Series 1'
+          YValues.Title.Text = 'Y-Axis Series 12344'
           YValues.Positions = [ypLeft, ypCenter, ypRight]
           Crosshair.XTextStroke.Color = 16105559
           Crosshair.XTextFill.Color = 16105559
@@ -846,16 +848,16 @@ object ChartDatabaseMainView: TChartDatabaseMainView
       Align = alClient
       TabOrder = 0
       ExplicitLeft = -1
-      ExplicitTop = 2
+      ExplicitTop = -3
     end
     object Panel1: TPanel
-      Left = 1056
+      Left = 1139
       Top = 1
       Width = 158
       Height = 618
       Align = alRight
       TabOrder = 1
-      ExplicitLeft = 1062
+      ExplicitLeft = 1145
       ExplicitTop = -4
       object lbStatusDataBase: TLabel
         AlignWithMargins = True
@@ -906,7 +908,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
         Margins.Top = 0
         Align = alTop
         Style = csDropDownList
-        DropDownCount = 16
+        DropDownCount = 19
         TabOrder = 1
         ExplicitLeft = 6
       end
@@ -921,7 +923,6 @@ object ChartDatabaseMainView: TChartDatabaseMainView
         TabOrder = 2
         OnClick = btnAlterarChartTypeClick
         ExplicitLeft = 6
-        ExplicitTop = 290
       end
       object ckMostrarMarcador: TCheckBox
         AlignWithMargins = True
@@ -955,21 +956,12 @@ object ChartDatabaseMainView: TChartDatabaseMainView
   object pnBotoes: TPanel
     Left = 0
     Top = 620
-    Width = 1215
+    Width = 1298
     Height = 40
     Align = alBottom
     TabOrder = 1
     ExplicitTop = 625
-    object TMSFNCChartDatabaseAdapter1: TTMSFNCChartDatabaseAdapter
-      Left = 912
-      Top = 6
-      Width = 26
-      Height = 26
-      Visible = True
-      AutoCreateSeries = False
-      Source.DataSource = DataSource1
-      Source.Series = <>
-    end
+    ExplicitWidth = 1215
     object Panel3: TPanel
       Left = 1
       Top = 1
@@ -979,18 +971,29 @@ object ChartDatabaseMainView: TChartDatabaseMainView
       BevelOuter = bvNone
       Padding.Left = 3
       Padding.Top = 8
-      TabOrder = 1
+      TabOrder = 0
     end
+  end
+  object TMSFNCChartDatabaseAdapter1: TTMSFNCChartDatabaseAdapter
+    Left = 896
+    Top = 61
+    Width = 26
+    Height = 26
+    Visible = True
+    AutoCreateSeries = False
+    Source.DataSource = DataSource1
+    Source.Series = <>
+    OnFieldsToSeries = TMSFNCChartDatabaseAdapter1FieldsToSeries
   end
   object ClientDataSet1: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 736
-    Top = 602
+    Left = 656
+    Top = 58
   end
   object DataSource1: TDataSource
     DataSet = ClientDataSet1
-    Left = 835
-    Top = 595
+    Left = 755
+    Top = 59
   end
 end

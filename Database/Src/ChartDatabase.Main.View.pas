@@ -46,11 +46,11 @@ type
     procedure FormCreate(Sender: TObject);
     procedure btnAbrirClick(Sender: TObject);
     procedure btnAlterarChartTypeClick(Sender: TObject);
+    procedure TMSFNCChartDatabaseAdapter1FieldsToSeries(Sender: TObject; AFields: TFields; ASeries: TTMSFNCChartSerie);
   private
     procedure PreencherDataset;
     function GetNumeroAleatorio: Double;
     procedure PreenchercBoxChartType;
-
   public
 
   end;
@@ -116,7 +116,6 @@ end;
 procedure TChartDatabaseMainView.btnAbrirClick(Sender: TObject);
 var
   LSeriesItem: TTMSFNCChartDatabaseAdapterSeriesItem;
-  LSerieChart: TTMSFNCChartSerie;
 begin
   if TMSFNCChartDatabaseAdapter1.Active then
   begin
@@ -125,10 +124,11 @@ begin
     Exit;
   end;
 
-  //LIMPA TODAS AS SERIES DO ChartDatabaseAdapter
-  TMSFNCChartDatabaseAdapter1.Source.Series.Clear;
   //SETAMOS PARA FALSE PARA QUE NOS MESMO CRIEMOS AS SERIES
   TMSFNCChartDatabaseAdapter1.AutoCreateSeries := False;
+
+  //LIMPA TODAS AS SERIES DO ChartDatabaseAdapter
+  TMSFNCChartDatabaseAdapter1.Source.Series.Clear;
 
   //ADICIONE AO ChartDatabaseAdapter A SERIE COM VALORES DO ANO PASSADO
   LSeriesItem := TMSFNCChartDatabaseAdapter1.Source.Series.Add;
@@ -145,7 +145,17 @@ begin
   TMSFNCChartDatabaseAdapter1.Active := True;
   lbStatusDataBase.Caption := 'Conectado';
 
-  btnAlterarChartType.Click;
+  //btnAlterarChartType.Click;
+end;
+
+procedure TChartDatabaseMainView.TMSFNCChartDatabaseAdapter1FieldsToSeries(Sender: TObject; AFields: TFields;
+  ASeries: TTMSFNCChartSerie);
+begin
+  ASeries.ChartType := TTMSFNCChartSerieType(cBoxChartType.ItemIndex);
+  ASeries.Markers.Visible := ckMostrarMarcador.Checked;
+  ASeries.Labels.Visible := ckMostrarLabels.Checked;
+  ASeries.YValues.Title.Text := 'Total em vendas';
+  ASeries.XValues.Title.Text := 'Dias vendidos';
 end;
 
 procedure TChartDatabaseMainView.btnAlterarChartTypeClick(Sender: TObject);
@@ -160,20 +170,18 @@ begin
   end;
 
   //INTERCEPTA A SERIE NO TMSFNCChart1 CASO QUEIRA FAZER ALGUMA ALTERACAO
+  //TAMBEM PODE SER CONFIGURADO NO EVENTO OnFieldsToSeries DO TMSFNCChartDatabaseAdapter
   LSerieChart := TMSFNCChart1.Series[0];
   LSerieChart.ChartType := TTMSFNCChartSerieType(cBoxChartType.ItemIndex);
   LSerieChart.LegendText := 'Ano passado';
   LSerieChart.Markers.Visible := ckMostrarMarcador.Checked;
   LSerieChart.Labels.Visible := ckMostrarLabels.Checked;
-  LSerieChart.Pie.Stacked := True;
-
 
   LSerieChart := TMSFNCChart1.Series[1];
   LSerieChart.ChartType := TTMSFNCChartSerieType(cBoxChartType.ItemIndex);
   LSerieChart.LegendText := 'Ano Atual';
   LSerieChart.Markers.Visible := ckMostrarMarcador.Checked;
   LSerieChart.Labels.Visible := ckMostrarLabels.Checked;
-  LSerieChart.Pie.Stacked := True;
 end;
 
 end.
