@@ -5,6 +5,7 @@ interface
 uses
   Winapi.Windows,
   Winapi.Messages,
+  TypInfo,
   System.SysUtils,
   System.Variants,
   System.Classes,
@@ -31,18 +32,22 @@ type
     pnBotoes: TPanel;
     ClientDataSet1: TClientDataSet;
     DataSource1: TDataSource;
-    btnAbrir: TBitBtn;
     TMSFNCChartDatabaseAdapter1: TTMSFNCChartDatabaseAdapter;
-    lbStatusDataBase: TLabel;
     TMSFNCChart1: TTMSFNCChart;
     Panel3: TPanel;
-    cBoxChartType: TComboBox;
+    Panel1: TPanel;
+    btnAbrir: TBitBtn;
+    lbStatusDataBase: TLabel;
     Label1: TLabel;
+    cBoxChartType: TComboBox;
+    btnAlterarChartType: TBitBtn;
     procedure FormCreate(Sender: TObject);
     procedure btnAbrirClick(Sender: TObject);
+    procedure btnAlterarChartTypeClick(Sender: TObject);
   private
     procedure PreencherDataset;
     function GetNumeroAleatorio: Double;
+    procedure PreenchercBoxChartType;
 
   public
 
@@ -109,6 +114,13 @@ var
   LSeriesItem: TTMSFNCChartDatabaseAdapterSeriesItem;
   LSerieChart: TTMSFNCChartSerie;
 begin
+  if TMSFNCChartDatabaseAdapter1.Active then
+  begin
+    TMSFNCChartDatabaseAdapter1.Active := False;
+    lbStatusDataBase.Caption := 'Desconectado';
+    Exit;
+  end;
+
   //LIMPA TODAS AS SERIES DO ChartDatabaseAdapter
   TMSFNCChartDatabaseAdapter1.Source.Series.Clear;
   //SETAMOS PARA FALSE PARA QUE NOS MESMO CRIEMOS AS SERIES
@@ -120,18 +132,28 @@ begin
   LSeriesItem.XValue := 'data';
   LSeriesItem.XLabel := 'Data';
 
-  TMSFNCChartDatabaseAdapter1.Active := not TMSFNCChartDatabaseAdapter1.Active;
+  TMSFNCChartDatabaseAdapter1.Active := True;
+  lbStatusDataBase.Caption := 'Conectado';
 
-  //INTERCEPTA A SERIE NO TMSFNCLineChart1 CASO QUEIRA FAZER ALGUMA ALTERACAO
-  LSerieChart := TMSFNCLineChart1.Series[0];
+  btnAlterarChartType.Click;
+end;
+
+procedure TChartDatabaseMainView.btnAlterarChartTypeClick(Sender: TObject);
+var
+  LSerieChart: TTMSFNCChartSerie;
+begin
+  if not TMSFNCChartDatabaseAdapter1.Active then
+  begin
+    ShowMessage('DatabaseAdapter não esta ativo');
+    btnAbrir.SetFocus;
+    Exit;
+  end;
+
+  //INTERCEPTA A SERIE NO TMSFNCChart1 CASO QUEIRA FAZER ALGUMA ALTERACAO
+  LSerieChart := TMSFNCChart1.Series[0];
   LSerieChart.ChartType := TTMSFNCChartSerieType(cBoxChartType.ItemIndex);
   LSerieChart.LegendText := 'Vendas por dia';
   LSerieChart.Markers.Visible := True;
-
-  //APENAS ALTERA O CAPTION
-  lbStatusDataBase.Caption := 'Desconectado';
-  if TMSFNCChartDatabaseAdapter1.Active then
-    lbStatusDataBase.Caption := 'Conectado';
 end;
 
 end.

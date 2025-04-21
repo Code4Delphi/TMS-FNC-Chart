@@ -27,7 +27,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
     object TMSFNCChart1: TTMSFNCChart
       Left = 1
       Top = 1
-      Width = 1213
+      Width = 1055
       Height = 618
       Appearance.ColorList = <
         item
@@ -834,7 +834,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
       Title.TextMargins.Top = 3
       Title.TextMargins.Right = 3
       Title.TextMargins.Bottom = 3
-      Title.Text = 'TMS FNC Chart'
+      Title.Text = 'Relat'#243'rio de vendas por dia'
       XAxis.Stroke.Kind = gskSolid
       XAxis.Height = 35.000000000000000000
       YAxis.Stroke.Kind = gskSolid
@@ -845,10 +845,84 @@ object ChartDatabaseMainView: TChartDatabaseMainView
       DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
       Align = alClient
       TabOrder = 0
-      ExplicitLeft = 224
-      ExplicitTop = 176
-      ExplicitWidth = 550
-      ExplicitHeight = 350
+      ExplicitLeft = -1
+      ExplicitTop = 2
+    end
+    object Panel1: TPanel
+      Left = 1056
+      Top = 1
+      Width = 158
+      Height = 618
+      Align = alRight
+      TabOrder = 1
+      ExplicitLeft = 1057
+      ExplicitTop = -4
+      object lbStatusDataBase: TLabel
+        AlignWithMargins = True
+        Left = 4
+        Top = 50
+        Width = 150
+        Height = 21
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Desconectado'
+        ExplicitLeft = 6
+        ExplicitTop = 52
+        ExplicitWidth = 148
+      end
+      object Label1: TLabel
+        AlignWithMargins = True
+        Left = 6
+        Top = 124
+        Width = 148
+        Height = 15
+        Margins.Left = 5
+        Margins.Top = 50
+        Align = alTop
+        Caption = 'ChartType:'
+        ExplicitLeft = 8
+        ExplicitTop = 240
+      end
+      object btnAbrir: TBitBtn
+        AlignWithMargins = True
+        Left = 4
+        Top = 4
+        Width = 150
+        Height = 40
+        Align = alTop
+        Caption = 'Conectar / desconectatar'
+        TabOrder = 0
+        OnClick = btnAbrirClick
+        ExplicitLeft = 1
+        ExplicitTop = 1
+        ExplicitWidth = 156
+      end
+      object cBoxChartType: TComboBox
+        AlignWithMargins = True
+        Left = 4
+        Top = 142
+        Width = 150
+        Height = 23
+        Margins.Top = 0
+        Align = alTop
+        Style = csDropDownList
+        TabOrder = 1
+        ExplicitLeft = 6
+      end
+      object btnAlterarChartType: TBitBtn
+        AlignWithMargins = True
+        Left = 4
+        Top = 171
+        Width = 150
+        Height = 40
+        Align = alTop
+        Caption = 'Alterar ChartType'
+        TabOrder = 2
+        OnClick = btnAlterarChartTypeClick
+        ExplicitLeft = 1
+        ExplicitTop = 162
+        ExplicitWidth = 156
+      end
     end
   end
   object pnBotoes: TPanel
@@ -859,43 +933,6 @@ object ChartDatabaseMainView: TChartDatabaseMainView
     Align = alBottom
     TabOrder = 1
     ExplicitTop = 625
-    object lbStatusDataBase: TLabel
-      AlignWithMargins = True
-      Left = 591
-      Top = 4
-      Width = 75
-      Height = 32
-      Margins.Left = 5
-      Align = alLeft
-      Caption = 'Desconectado'
-      Layout = tlCenter
-      ExplicitLeft = 230
-      ExplicitHeight = 15
-    end
-    object Label1: TLabel
-      AlignWithMargins = True
-      Left = 6
-      Top = 4
-      Width = 57
-      Height = 32
-      Margins.Left = 5
-      Align = alLeft
-      Caption = 'ChartType:'
-      Layout = tlCenter
-      ExplicitHeight = 15
-    end
-    object btnAbrir: TBitBtn
-      Left = 362
-      Top = 1
-      Width = 224
-      Height = 38
-      Align = alLeft
-      Caption = 'Conectar / desconectatar'
-      TabOrder = 0
-      OnClick = btnAbrirClick
-      ExplicitLeft = 297
-      ExplicitTop = 5
-    end
     object TMSFNCChartDatabaseAdapter1: TTMSFNCChartDatabaseAdapter
       Left = 912
       Top = 6
@@ -907,7 +944,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
       Source.Series = <>
     end
     object Panel3: TPanel
-      Left = 66
+      Left = 1
       Top = 1
       Width = 296
       Height = 38
@@ -915,17 +952,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
       BevelOuter = bvNone
       Padding.Left = 3
       Padding.Top = 8
-      TabOrder = 2
-      ExplicitLeft = 1
-      object cBoxChartType: TComboBox
-        Left = 3
-        Top = 8
-        Width = 287
-        Height = 23
-        Align = alLeft
-        Style = csDropDownList
-        TabOrder = 0
-      end
+      TabOrder = 1
     end
   end
   object ClientDataSet1: TClientDataSet
