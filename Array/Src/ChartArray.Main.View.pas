@@ -1,4 +1,4 @@
-unit Main.View;
+unit ChartArray.Main.View;
 
 interface
 
@@ -23,7 +23,7 @@ uses
   Vcl.ExtCtrls;
 
 type
-  TMainView = class(TForm)
+  TChartArrayMainView = class(TForm)
     Chart1: TTMSFNCBarChart;
     Panel1: TPanel;
     btnSetarConfigPadroes: TBitBtn;
@@ -48,18 +48,18 @@ type
   end;
 
 var
-  MainView: TMainView;
+  ChartArrayMainView: TChartArrayMainView;
 
 implementation
 
 {$R *.dfm}
 
-procedure TMainView.FormCreate(Sender: TObject);
+procedure TChartArrayMainView.FormCreate(Sender: TObject);
 begin
   Self.PreenchercBoxChartEditorType;
 end;
 
-procedure TMainView.PreenchercBoxChartEditorType;
+procedure TChartArrayMainView.PreenchercBoxChartEditorType;
 var
   LItem: TTMSFNCChartEditorType;
 begin
@@ -69,7 +69,7 @@ begin
   cBoxChartEditorType.ItemIndex := Integer(TTMSFNCChartEditorType.etGeneral);
 end;
 
-procedure TMainView.btnSetarConfigPadroesClick(Sender: TObject);
+procedure TChartArrayMainView.btnSetarConfigPadroesClick(Sender: TObject);
 begin
   //AS OPCOES PRESENTES EM Chart1.DefaultLoadOptions PERMITE PERSONALIZAR A FORMA COMO
   //OS DADOS SAO PROCESSADOS QUANDO CARREGADOS NO GRAFICO
@@ -80,7 +80,7 @@ begin
   Chart1.DefaultLoadOptions.YValuesFormatType := vftFloat;
 end;
 
-procedure TMainView.btnCarregarArrayVendasDaSemanaClick(Sender: TObject);
+procedure TChartArrayMainView.btnCarregarArrayVendasDaSemanaClick(Sender: TObject);
 begin
 //  Chart1.DefaultLoadOptions.XValuesFormatType: vftDateTime;
 //  Chart1. LoadFromDataArray (0,
@@ -99,7 +99,7 @@ begin
     ).LegendText := 'Vendas da semana';
 end;
 
-procedure TMainView.btnAdicionarSerieVendasAVistaClick(Sender: TObject);
+procedure TChartArrayMainView.btnAdicionarSerieVendasAVistaClick(Sender: TObject);
 var
   LSerieAVista: TTMSFNCChartSerie;
 begin
@@ -108,7 +108,7 @@ begin
   LSerieAVista.LegendText := 'Vendas à vista';
 end;
 
-procedure TMainView.btnAdicionarSerieVendasAPrazoClick(Sender: TObject);
+procedure TChartArrayMainView.btnAdicionarSerieVendasAPrazoClick(Sender: TObject);
 var
   LSerieAPrazo: TTMSFNCChartSerie;
 begin
@@ -117,7 +117,7 @@ begin
   LSerieAPrazo.LegendText := 'Vendas a prazo';
 end;
 
-procedure TMainView.btnConfigurarGraficoClick(Sender: TObject);
+procedure TChartArrayMainView.btnConfigurarGraficoClick(Sender: TObject);
 begin
   Chart1.ShowEditor(TTMSFNCChartEditorType(cBoxChartEditorType.ItemIndex));
 end;

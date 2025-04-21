@@ -2,13 +2,13 @@ program TMSFNCChartArray;
 
 uses
   Vcl.Forms,
-  Main.View in 'Src\Main.View.pas' {MainView};
+  ChartArray.Main.View in 'Src\ChartArray.Main.View.pas' {ChartArrayMainView};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TMainView, MainView);
+  Application.CreateForm(TChartArrayMainView, ChartArrayMainView);
   Application.Run;
 end.

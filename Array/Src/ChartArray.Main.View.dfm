@@ -1,4 +1,4 @@
-object MainView: TMainView
+object ChartArrayMainView: TChartArrayMainView
   Left = 0
   Top = 0
   Caption = 'TMS FNC Chart - Arrays'

@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{7F56FB3E-392A-441C-9B5A-35E98AE0F43F}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Array\TMSFNCChartArray.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Database\TMSFNCChartDatabase.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="TMSFNCChartArray">
+        <MSBuild Projects="Array\TMSFNCChartArray.dproj"/>
+    </Target>
+    <Target Name="TMSFNCChartArray:Clean">
+        <MSBuild Projects="Array\TMSFNCChartArray.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TMSFNCChartArray:Make">
+        <MSBuild Projects="Array\TMSFNCChartArray.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TMSFNCChartDatabase">
+        <MSBuild Projects="Database\TMSFNCChartDatabase.dproj"/>
+    </Target>
+    <Target Name="TMSFNCChartDatabase:Clean">
+        <MSBuild Projects="Database\TMSFNCChartDatabase.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TMSFNCChartDatabase:Make">
+        <MSBuild Projects="Database\TMSFNCChartDatabase.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="TMSFNCChartArray;TMSFNCChartDatabase"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="TMSFNCChartArray:Clean;TMSFNCChartDatabase:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="TMSFNCChartArray:Make;TMSFNCChartDatabase:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
