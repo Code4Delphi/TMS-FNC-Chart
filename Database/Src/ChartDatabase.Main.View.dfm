@@ -77,6 +77,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
       Legend.Font.Style = []
       Legend.Left = 10.000000000000000000
       Legend.Top = 10.000000000000000000
+      Interaction = False
       SeriesMargins.Left = 0
       SeriesMargins.Top = 0
       SeriesMargins.Right = 0
@@ -881,9 +882,19 @@ object ChartDatabaseMainView: TChartDatabaseMainView
         Margins.Left = 5
         Margins.Top = 50
         Align = alTop
-        Caption = 'ChartType:'
-        ExplicitLeft = 8
-        ExplicitTop = 240
+        Caption = 'ChartType'
+        ExplicitWidth = 54
+      end
+      object Label2: TLabel
+        AlignWithMargins = True
+        Left = 6
+        Top = 171
+        Width = 148
+        Height = 15
+        Margins.Left = 5
+        Align = alTop
+        Caption = 'Esquema de cores'
+        ExplicitWidth = 95
       end
       object btnAbrir: TBitBtn
         AlignWithMargins = True
@@ -912,22 +923,22 @@ object ChartDatabaseMainView: TChartDatabaseMainView
         TabOrder = 1
         ExplicitLeft = 6
       end
-      object btnAlterarChartType: TBitBtn
+      object btnAplicarAlteracoes: TBitBtn
         AlignWithMargins = True
         Left = 4
-        Top = 217
+        Top = 264
         Width = 150
         Height = 40
         Align = alTop
-        Caption = 'Alterar ChartType'
+        Caption = 'Aplicar altera'#231#245'es'
         TabOrder = 2
-        OnClick = btnAlterarChartTypeClick
+        OnClick = btnAplicarAlteracoesClick
         ExplicitLeft = 6
       end
       object ckMostrarMarcador: TCheckBox
         AlignWithMargins = True
         Left = 4
-        Top = 171
+        Top = 218
         Width = 150
         Height = 17
         Align = alTop
@@ -936,11 +947,12 @@ object ChartDatabaseMainView: TChartDatabaseMainView
         State = cbChecked
         TabOrder = 3
         ExplicitLeft = 6
+        ExplicitTop = 171
       end
       object ckMostrarLabels: TCheckBox
         AlignWithMargins = True
         Left = 4
-        Top = 194
+        Top = 241
         Width = 150
         Height = 17
         Align = alTop
@@ -950,6 +962,33 @@ object ChartDatabaseMainView: TChartDatabaseMainView
         TabOrder = 4
         ExplicitLeft = 20
         ExplicitTop = 263
+      end
+      object cBoxEsquemaCores: TComboBox
+        AlignWithMargins = True
+        Left = 4
+        Top = 189
+        Width = 150
+        Height = 23
+        Margins.Top = 0
+        Align = alTop
+        Style = csDropDownList
+        DropDownCount = 19
+        TabOrder = 5
+        ExplicitLeft = 6
+        ExplicitTop = 212
+      end
+      object btnConfigurarGrafico: TBitBtn
+        AlignWithMargins = True
+        Left = 4
+        Top = 574
+        Width = 150
+        Height = 40
+        Align = alBottom
+        Caption = 'Configurar gr'#225'fico'
+        TabOrder = 6
+        OnClick = btnConfigurarGraficoClick
+        ExplicitLeft = 6
+        ExplicitTop = 573
       end
     end
   end

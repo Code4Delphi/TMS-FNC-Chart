@@ -651,6 +651,7 @@ object ChartArrayMainView: TChartArrayMainView
       Caption = '5'#186' - Configurar gr'#225'fico'
       TabOrder = 0
       OnClick = btnConfigurarGraficoClick
+      ExplicitTop = 5
     end
     object Panel3: TPanel
       Left = 1

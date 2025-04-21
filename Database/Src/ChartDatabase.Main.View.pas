@@ -40,17 +40,22 @@ type
     lbStatusDataBase: TLabel;
     Label1: TLabel;
     cBoxChartType: TComboBox;
-    btnAlterarChartType: TBitBtn;
+    btnAplicarAlteracoes: TBitBtn;
     ckMostrarMarcador: TCheckBox;
     ckMostrarLabels: TCheckBox;
+    Label2: TLabel;
+    cBoxEsquemaCores: TComboBox;
+    btnConfigurarGrafico: TBitBtn;
     procedure FormCreate(Sender: TObject);
     procedure btnAbrirClick(Sender: TObject);
-    procedure btnAlterarChartTypeClick(Sender: TObject);
+    procedure btnAplicarAlteracoesClick(Sender: TObject);
     procedure TMSFNCChartDatabaseAdapter1FieldsToSeries(Sender: TObject; AFields: TFields; ASeries: TTMSFNCChartSerie);
+    procedure btnConfigurarGraficoClick(Sender: TObject);
   private
     procedure PreencherDataset;
     function GetNumeroAleatorio: Double;
     procedure PreenchercBoxChartType;
+    procedure PreenchercBoxEsquemaCores;
   public
 
   end;
@@ -65,6 +70,7 @@ implementation
 procedure TChartDatabaseMainView.FormCreate(Sender: TObject);
 begin
   Self.PreenchercBoxChartType;
+  Self.PreenchercBoxEsquemaCores;
   Self.PreencherDataset;
 end;
 
@@ -78,6 +84,18 @@ begin
     cBoxChartType.Items.Add(GetEnumName(TypeInfo(TTMSFNCChartSerieType), Integer(LItem)));
 
   cBoxChartType.ItemIndex := Integer(TTMSFNCChartSerieType.ctLine);
+end;
+
+procedure TChartDatabaseMainView.PreenchercBoxEsquemaCores;
+var
+  LItem: TTMSFNCChartColorScheme;
+begin
+  cBoxEsquemaCores.Items.Clear;
+
+  for LItem := Low(TTMSFNCChartColorScheme) to High(TTMSFNCChartColorScheme) do
+    cBoxEsquemaCores.Items.Add(GetEnumName(TypeInfo(TTMSFNCChartColorScheme), Integer(LItem)));
+
+  cBoxEsquemaCores.ItemIndex := Integer(TTMSFNCChartColorScheme.ccsColorList);
 end;
 
 procedure TChartDatabaseMainView.PreencherDataset;
@@ -158,7 +176,7 @@ begin
   ASeries.XValues.Title.Text := 'Dias vendidos';
 end;
 
-procedure TChartDatabaseMainView.btnAlterarChartTypeClick(Sender: TObject);
+procedure TChartDatabaseMainView.btnAplicarAlteracoesClick(Sender: TObject);
 var
   LSerieChart: TTMSFNCChartSerie;
 begin
@@ -168,6 +186,8 @@ begin
     btnAbrir.SetFocus;
     Exit;
   end;
+
+  TMSFNCChart1.Appearance.ColorScheme := TTMSFNCChartColorScheme(cBoxEsquemaCores.ItemIndex);
 
   //INTERCEPTA A SERIE NO TMSFNCChart1 CASO QUEIRA FAZER ALGUMA ALTERACAO
   //TAMBEM PODE SER CONFIGURADO NO EVENTO OnFieldsToSeries DO TMSFNCChartDatabaseAdapter
@@ -182,6 +202,11 @@ begin
   LSerieChart.LegendText := 'Ano Atual';
   LSerieChart.Markers.Visible := ckMostrarMarcador.Checked;
   LSerieChart.Labels.Visible := ckMostrarLabels.Checked;
+end;
+
+procedure TChartDatabaseMainView.btnConfigurarGraficoClick(Sender: TObject);
+begin
+  TMSFNCChart1.ShowEditor(TTMSFNCChartEditorType.etGeneral);
 end;
 
 end.
