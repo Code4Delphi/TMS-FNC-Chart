@@ -2,8 +2,8 @@ object MainView: TMainView
   Left = 0
   Top = 0
   Caption = 'TMS FNC Chart - Arrays'
-  ClientHeight = 567
-  ClientWidth = 860
+  ClientHeight = 592
+  ClientWidth = 1020
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,12 +11,13 @@ object MainView: TMainView
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poScreenCenter
+  OnCreate = FormCreate
   TextHeight = 15
   object Chart1: TTMSFNCBarChart
     Left = 0
     Top = 0
-    Width = 860
-    Height = 512
+    Width = 1020
+    Height = 497
     Appearance.ColorList = <
       item
         Color = 16105559
@@ -585,20 +586,24 @@ object MainView: TMainView
     DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 497
+    ExplicitLeft = 8
+    ExplicitTop = -5
+    ExplicitWidth = 860
+    ExplicitHeight = 512
   end
   object Panel1: TPanel
     Left = 0
-    Top = 512
-    Width = 860
+    Top = 497
+    Width = 1020
     Height = 55
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 518
+    ExplicitTop = 512
+    ExplicitWidth = 860
     object btnSetarConfigPadroes: TBitBtn
       Left = 1
       Top = 1
-      Width = 166
+      Width = 158
       Height = 53
       Align = alLeft
       Caption = '1'#186' - Setar config padr'#245'es'
@@ -606,36 +611,80 @@ object MainView: TMainView
       OnClick = btnSetarConfigPadroesClick
     end
     object btnCarregarArrayVendasDaSemana: TBitBtn
-      Left = 167
+      Left = 159
       Top = 1
-      Width = 230
+      Width = 222
       Height = 53
       Align = alLeft
       Caption = '2'#186' - Carregar de Array vendas da semana'
       TabOrder = 1
       OnClick = btnCarregarArrayVendasDaSemanaClick
-      ExplicitLeft = 161
-      ExplicitTop = 6
+      ExplicitLeft = 165
+      ExplicitTop = 5
     end
     object btnAdicionarSerieVendasAVista: TBitBtn
-      Left = 397
+      Left = 381
       Top = 1
-      Width = 230
+      Width = 222
       Height = 53
       Align = alLeft
       Caption = '3'#186' - Adicionar S'#233'rie vendas '#224' vista'
       TabOrder = 2
       OnClick = btnAdicionarSerieVendasAVistaClick
+      ExplicitHeight = 40
     end
     object btnAdicionarSerieVendasAPrazo: TBitBtn
-      Left = 627
+      Left = 603
       Top = 1
-      Width = 230
+      Width = 222
       Height = 53
       Align = alLeft
       Caption = '4'#186' - Adicionar S'#233'rie vendas a prazo'
       TabOrder = 3
       OnClick = btnAdicionarSerieVendasAPrazoClick
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 552
+    Width = 1020
+    Height = 40
+    Align = alBottom
+    TabOrder = 2
+    ExplicitLeft = 1
+    ExplicitTop = 557
+    object btnConfigurarGrafico: TBitBtn
+      Left = 166
+      Top = 1
+      Width = 222
+      Height = 38
+      Align = alLeft
+      Caption = '5'#186' - Configurar gr'#225'fico'
+      TabOrder = 0
+      OnClick = btnConfigurarGraficoClick
+      ExplicitLeft = 159
+    end
+    object Panel3: TPanel
+      Left = 1
+      Top = 1
+      Width = 165
+      Height = 38
+      Align = alLeft
+      BevelOuter = bvNone
+      Padding.Left = 3
+      Padding.Top = 8
+      TabOrder = 1
+      object cBoxChartEditorType: TComboBox
+        Left = 3
+        Top = 8
+        Width = 156
+        Height = 23
+        Align = alLeft
+        Style = csDropDownList
+        TabOrder = 0
+        ExplicitLeft = -4
+        ExplicitTop = 5
+      end
     end
   end
 end
