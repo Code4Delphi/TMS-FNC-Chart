@@ -46,11 +46,13 @@ type
     Label2: TLabel;
     cBoxEsquemaCores: TComboBox;
     btnConfigurarGrafico: TBitBtn;
+    btnSalvarGrafico: TButton;
     procedure FormCreate(Sender: TObject);
     procedure btnAbrirClick(Sender: TObject);
     procedure btnAplicarAlteracoesClick(Sender: TObject);
     procedure TMSFNCChartDatabaseAdapter1FieldsToSeries(Sender: TObject; AFields: TFields; ASeries: TTMSFNCChartSerie);
     procedure btnConfigurarGraficoClick(Sender: TObject);
+    procedure btnSalvarGraficoClick(Sender: TObject);
   private
     procedure PreencherDataset;
     function GetNumeroAleatorio: Double;
@@ -207,6 +209,24 @@ end;
 procedure TChartDatabaseMainView.btnConfigurarGraficoClick(Sender: TObject);
 begin
   TMSFNCChart1.ShowEditor(TTMSFNCChartEditorType.etGeneral);
+end;
+
+procedure TChartDatabaseMainView.btnSalvarGraficoClick(Sender: TObject);
+var
+  SaveDialog: TSaveDialog;
+begin
+  SaveDialog := TSaveDialog.Create(nil);
+  try
+    SaveDialog.Title := 'Salvar imagem do gráfico';
+    SaveDialog.Filter := 'Imagem PNG (*.png)|*.png';
+    SaveDialog.DefaultExt := 'png';
+    SaveDialog.FileName := 'ImagemSalva.png';
+
+    if SaveDialog.Execute then
+      TMSFNCChart1.SaveToImage(SaveDialog.FileName);
+  finally
+    SaveDialog.Free;
+  end;
 end;
 
 end.
