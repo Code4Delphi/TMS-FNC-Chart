@@ -63,6 +63,8 @@ procedure TChartArrayMainView.PreenchercBoxChartEditorType;
 var
   LItem: TTMSFNCChartEditorType;
 begin
+  cBoxChartEditorType.Items.Clear;
+
   for LItem := Low(TTMSFNCChartEditorType) to High(TTMSFNCChartEditorType) do
     cBoxChartEditorType.Items.Add(GetEnumName(TypeInfo(TTMSFNCChartEditorType), Integer(LItem)));
 

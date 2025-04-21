@@ -586,10 +586,6 @@ object ChartArrayMainView: TChartArrayMainView
     DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = -5
-    ExplicitWidth = 860
-    ExplicitHeight = 512
   end
   object Panel1: TPanel
     Left = 0
@@ -598,8 +594,6 @@ object ChartArrayMainView: TChartArrayMainView
     Height = 55
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 512
-    ExplicitWidth = 860
     object btnSetarConfigPadroes: TBitBtn
       Left = 1
       Top = 1
@@ -619,8 +613,6 @@ object ChartArrayMainView: TChartArrayMainView
       Caption = '2'#186' - Carregar de Array vendas da semana'
       TabOrder = 1
       OnClick = btnCarregarArrayVendasDaSemanaClick
-      ExplicitLeft = 165
-      ExplicitTop = 5
     end
     object btnAdicionarSerieVendasAVista: TBitBtn
       Left = 381
@@ -631,7 +623,6 @@ object ChartArrayMainView: TChartArrayMainView
       Caption = '3'#186' - Adicionar S'#233'rie vendas '#224' vista'
       TabOrder = 2
       OnClick = btnAdicionarSerieVendasAVistaClick
-      ExplicitHeight = 40
     end
     object btnAdicionarSerieVendasAPrazo: TBitBtn
       Left = 603
@@ -651,8 +642,6 @@ object ChartArrayMainView: TChartArrayMainView
     Height = 40
     Align = alBottom
     TabOrder = 2
-    ExplicitLeft = 1
-    ExplicitTop = 557
     object btnConfigurarGrafico: TBitBtn
       Left = 166
       Top = 1
@@ -662,7 +651,6 @@ object ChartArrayMainView: TChartArrayMainView
       Caption = '5'#186' - Configurar gr'#225'fico'
       TabOrder = 0
       OnClick = btnConfigurarGraficoClick
-      ExplicitLeft = 159
     end
     object Panel3: TPanel
       Left = 1
@@ -682,7 +670,6 @@ object ChartArrayMainView: TChartArrayMainView
         Align = alLeft
         Style = csDropDownList
         TabOrder = 0
-        ExplicitLeft = -4
         ExplicitTop = 5
       end
     end
