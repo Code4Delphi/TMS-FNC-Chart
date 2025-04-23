@@ -7,6 +7,14 @@ Os dados podem ser carregados a partir de uma base de dados, arquivos CSV, JSON,
 
 O componente é multiplataforma e pode ser utilizado em aplicações VCL, FireMonkey ou TMS Web Core, permitindo que o mesmo código de visualização de gráficos funcione em aplicações desktop, mobile e web. Além disso, oferece suporte a diversos tipos de gráficos, como **barras, linhas, áreas, pizza, spider**, entre outros, com ampla capacidade de configuração visual e interatividade.
 
+## 🚀 Multiplataforma 
+✅ Aplicações Desktop - VCL
+
+✅ Aplicações Mobile - FireMonkey (FMX)
+
+✅ Aplicações Web - TMS Web Core
+
+
 ## 🔗 Links
 - Onde baixar: https://www.tmssoftware.com/site/tmsfncchart.asp
 - Documentação oficial: https://download.tmssoftware.com/doc/tmsfncchart/
@@ -14,7 +22,7 @@ O componente é multiplataforma e pode ser utilizado em aplicações VCL, FireMo
 ## ▶️ Vídeos de demonstração do projeto no Youtube
 [add link]
 
-## 🚀 Exemplos
+## 📈 Demonstrações
 - Vários tipos de gráficos de área com legenda de série e valores dos eixos Y e X calculados automaticamente
 ![fncchartarea](https://github.com/user-attachments/assets/47d2da6b-fa99-4e63-8c8f-44082680035b)
 
