@@ -1,4 +1,4 @@
-# 📊 TMS FNC Chart 📈
+# TMS FNC Chart 📈📊📉
 
 ## 📝 Descrição
 Com o TMS FNC Chart, é possível gerar gráficos totalmente personalizáveis, tanto em tempo de design quanto em tempo de execução.
