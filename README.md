@@ -23,17 +23,20 @@ O componente é multiplataforma e pode ser utilizado em aplicações VCL, FireMo
 [add link]
 
 ## 📈 Demonstrações
-- Vários tipos de gráficos de área com legenda de série e valores dos eixos Y e X calculados automaticamente
-![fncchartarea](https://github.com/user-attachments/assets/47d2da6b-fa99-4e63-8c8f-44082680035b)
+- Editor com alta resolução (high DPI) em tempo de design e tempo de execução, se adaptando ao tema habilitad IDE
+ ![fncchartediror](https://github.com/user-attachments/assets/983447f5-705b-426b-93bf-cc01dc8542b6)
 
 - Gráfico de barras (bar) matemático e estatístico totalmente personalizável com modo empilhado opcional
 ![fncchartbar](https://github.com/user-attachments/assets/2c687505-a4c7-4f2f-b91c-7b82ba9c807c)
 
+- Gráficos do tipo Spider
+![image](https://github.com/user-attachments/assets/62115ce0-ffc3-495c-bdd5-df2dd5f870ed)
+
+- Vários tipos de gráficos de área com legenda de série e valores dos eixos Y e X calculados automaticamente
+![fncchartarea](https://github.com/user-attachments/assets/47d2da6b-fa99-4e63-8c8f-44082680035b)
+
 - Representação de dados em gráfico de pie/donut (pizza/rosquinha) com possibilidades de configuração de fatias variáveis ​​e legenda opcional
 ![fncchartpie](https://github.com/user-attachments/assets/13a97406-5334-4390-a5c6-3a2a455eb8b1)
-
-- Editor com alta resolução (high DPI) em tempo de design e tempo de execução, se adaptando ao tema habilitad IDE
- ![fncchartediror](https://github.com/user-attachments/assets/983447f5-705b-426b-93bf-cc01dc8542b6)
 
 - Exibir dados financeiros em séries multipontos e adicionar linhas de tendência para análise técnica
 ![fncchartcandle](https://github.com/user-attachments/assets/be221e3f-45d9-43be-817b-bee7c2d4464a)
