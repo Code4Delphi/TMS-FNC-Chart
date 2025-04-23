@@ -26,6 +26,9 @@ O componente é multiplataforma e pode ser utilizado em aplicações VCL, FireMo
 - Editor com alta resolução (high DPI) em tempo de design e tempo de execução, se adaptando ao tema habilitad IDE
  ![fncchartediror](https://github.com/user-attachments/assets/983447f5-705b-426b-93bf-cc01dc8542b6)
 
+- Importação de dados simplificada de vários tipos de arquivo. Vinculação de dados fácil, flexível e totalmente personalizável.
+![fncchartdata](https://github.com/user-attachments/assets/5000f6c5-3627-4f35-b4f4-9b8e4f87ba26)
+
 - Gráfico de barras (bar) matemático e estatístico totalmente personalizável com modo empilhado opcional
 ![fncchartbar](https://github.com/user-attachments/assets/2c687505-a4c7-4f2f-b91c-7b82ba9c807c)
 
@@ -62,9 +65,6 @@ O componente é multiplataforma e pode ser utilizado em aplicações VCL, FireMo
 - Possibilidade de mesclar tipos de gráficos, permitindo utilizar um tipo diferente para cada série, como Linhas e Barras
 
 ![image](https://github.com/user-attachments/assets/c9263120-a4c6-40e4-ab5c-2794c42a67d9)
-
-- Importação de dados simplificada de vários tipos de arquivo. Vinculação de dados fácil, flexível e totalmente personalizável.
-![fncchartdata](https://github.com/user-attachments/assets/5000f6c5-3627-4f35-b4f4-9b8e4f87ba26)
 
 <br/>
 
