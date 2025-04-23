@@ -44,9 +44,27 @@ O componente é multiplataforma e pode ser utilizado em aplicações VCL, FireMo
 - Crie, vincule e exiba expressões matemáticas complexas por meio do [TMS Analytics & Physics Pack](https://www.tmssoftware.com/site/tmsanalytics.asp)
 ![fncchartanalytics](https://github.com/user-attachments/assets/2fb24b7d-3301-4259-b124-7fc659796206)
 
+- Customização de marcadores com ícones personalizáveis <br/>
+
+![image](https://github.com/user-attachments/assets/589d362d-7528-4688-92f3-ac3b3147a4d6)
+
+<br/>
+- Gráficos configuráveis para exibição em 3D <br/>
+
+![image](https://github.com/user-attachments/assets/703babda-cbb9-44c6-ad9a-e5221b7da774)
+
+<br/>
+- Possibilidade de interagir com os gráficos <br/>
+
+![image](https://github.com/user-attachments/assets/48246a0c-51f2-4989-ad1d-13f6fd8650d6)
+
+<br/>
+- Possibilidade de mesclar tipos de gráficos, permitindo utilizar um tipo diferente para cada série, como Linhas e Barras
+
+![image](https://github.com/user-attachments/assets/c9263120-a4c6-40e4-ab5c-2794c42a67d9)
+
 - Importação de dados simplificada de vários tipos de arquivo. Vinculação de dados fácil, flexível e totalmente personalizável.
 ![fncchartdata](https://github.com/user-attachments/assets/5000f6c5-3627-4f35-b4f4-9b8e4f87ba26)
-
 
 <br/>
 
