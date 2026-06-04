@@ -19,8 +19,14 @@ O componente é multiplataforma e pode ser utilizado em aplicações VCL, FireMo
 - Onde baixar: https://www.tmssoftware.com/site/tmsfncchart.asp
 - Documentação oficial: https://download.tmssoftware.com/doc/tmsfncchart/
 
+## 🏷️ Cupom de desconto
+- Use este cupom exclusivo e tenha 30% de desconto em qualquer produto da TMS:
+```
+2026Code4Delphi30
+```
+
 ## ▶️ Vídeos de demonstração do projeto no Youtube
-[add link]
+[Crie gráficos incríveis com TMS FNC Chart](https://www.youtube.com/watch?v=-DQEvTOJp2U))
 
 ## 📈 Demonstrações
 - Editor com alta resolução (high DPI) em tempo de design e tempo de execução, se adaptando ao tema habilitad IDE
