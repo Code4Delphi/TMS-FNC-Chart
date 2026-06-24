@@ -42,9 +42,8 @@ type
     procedure FormCreate(Sender: TObject);
   private
     procedure PreenchercBoxChartEditorType;
-    { Private declarations }
   public
-    { Public declarations }
+
   end;
 
 var
@@ -84,18 +83,6 @@ end;
 
 procedure TChartArrayMainView.btnCarregarArrayVendasDaSemanaClick(Sender: TObject);
 begin
-//  Chart1.DefaultLoadOptions.XValuesFormatType: vftDateTime;
-//  Chart1. LoadFromDataArray (0,
-//  (18.6, 19.2, 14.6, 16.7, 18, 23.4, 21.1],
-//  [Today 6, Today 5, Today 4, Today 3,
-//  Today 2, Today 1,
-//  Today]).LegendTex:
-
-//  'Max Temp';
-//  Chart1. LoadFromDataArray(1,
-//  [12.3, 8.5, 11.4, 10.6, 12.4, 14.2, 13.1],
-//  [Today 6, Today 5, Today 4, Today 3, Today 2, Today 1, Today]). LegendText
-
   Chart1.LoadFromDataArray(0, [30, 50, 20, 65, 85, 90.5, 95], nil,
     ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo']
     ).LegendText := 'Vendas da semana';

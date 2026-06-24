@@ -29,13 +29,11 @@ uses
 type
   TChartDatabaseMainView = class(TForm)
     pnCorpo: TPanel;
-    pnBotoes: TPanel;
     ClientDataSet1: TClientDataSet;
     DataSource1: TDataSource;
     TMSFNCChartDatabaseAdapter1: TTMSFNCChartDatabaseAdapter;
     TMSFNCChart1: TTMSFNCChart;
-    Panel3: TPanel;
-    Panel1: TPanel;
+    pnBotoes: TPanel;
     btnAbrir: TBitBtn;
     lbStatusDataBase: TLabel;
     Label1: TLabel;
@@ -47,12 +45,16 @@ type
     cBoxEsquemaCores: TComboBox;
     btnConfigurarGrafico: TBitBtn;
     btnSalvarGrafico: TButton;
+    btnModoDark: TButton;
+    btnModoLight: TButton;
     procedure FormCreate(Sender: TObject);
     procedure btnAbrirClick(Sender: TObject);
     procedure btnAplicarAlteracoesClick(Sender: TObject);
     procedure TMSFNCChartDatabaseAdapter1FieldsToSeries(Sender: TObject; AFields: TFields; ASeries: TTMSFNCChartSerie);
     procedure btnConfigurarGraficoClick(Sender: TObject);
     procedure btnSalvarGraficoClick(Sender: TObject);
+    procedure btnModoDarkClick(Sender: TObject);
+    procedure btnModoLightClick(Sender: TObject);
   private
     procedure PreencherDataset;
     function GetNumeroAleatorio: Double;
@@ -226,6 +228,42 @@ begin
       TMSFNCChart1.SaveToImage(SaveDialog.FileName);
   finally
     SaveDialog.Free;
+  end;
+end;
+
+procedure TChartDatabaseMainView.btnModoLightClick(Sender: TObject);
+var
+  LSerieChart: TTMSFNCChartSerie;
+begin
+  ChartDatabaseMainView.Color := clBtnFace;
+
+  TMSFNCChart1.Appearance.GlobalFont.Color := gcNull;
+  TMSFNCChart1.Fill.Color := clWhite;
+  TMSFNCChart1.Legend.Fill.Color := clWhite;
+
+  for var i := 0 to pred(TMSFNCChart1.Series.Count) do
+  begin
+    LSerieChart := TMSFNCChart1.Series[i];
+    LSerieChart.Labels.Fill.Color := clWhite;
+    LSerieChart.Labels.Font.Color := clWindowText;
+  end;
+end;
+
+procedure TChartDatabaseMainView.btnModoDarkClick(Sender: TObject);
+var
+  LSerieChart: TTMSFNCChartSerie;
+begin
+  ChartDatabaseMainView.Color := $00403A34;
+
+  TMSFNCChart1.Appearance.GlobalFont.Color := clWhite;
+  TMSFNCChart1.Fill.Color := $00403A34;
+  TMSFNCChart1.Legend.Fill.Color := $00292521;
+
+  for var i := 0 to pred(TMSFNCChart1.Series.Count) do
+  begin
+    LSerieChart := TMSFNCChart1.Series[i];
+    LSerieChart.Labels.Fill.Color := $00bcb7b3;
+    LSerieChart.Labels.Font.Color := clWindowText;
   end;
 end;
 

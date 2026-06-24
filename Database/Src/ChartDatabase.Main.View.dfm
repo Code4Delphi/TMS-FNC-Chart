@@ -2,8 +2,8 @@ object ChartDatabaseMainView: TChartDatabaseMainView
   Left = 0
   Top = 0
   Caption = 'TMS FNC Chart - Database'
-  ClientHeight = 660
-  ClientWidth = 1298
+  ClientHeight = 529
+  ClientWidth = 1085
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,15 +16,17 @@ object ChartDatabaseMainView: TChartDatabaseMainView
   object pnCorpo: TPanel
     Left = 0
     Top = 0
-    Width = 1298
-    Height = 620
+    Width = 1085
+    Height = 529
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 1267
+    ExplicitHeight = 658
     object TMSFNCChart1: TTMSFNCChart
       Left = 1
       Top = 1
-      Width = 1138
-      Height = 618
+      Width = 925
+      Height = 527
       Appearance.ColorList = <
         item
           Color = 16105559
@@ -57,6 +59,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           Color = 16376965
         end>
       Appearance.GlobalFont.Color = -1
+      Appearance.GlobalFont.Name = 'Segoe UI'
       Appearance.GlobalFont.Scale = 1.000000000000000000
       Appearance.GlobalFont.Style = []
       Appearance.ColorScheme = ccsColorList
@@ -65,9 +68,10 @@ object ChartDatabaseMainView: TChartDatabaseMainView
       InteractionOptions.ShowEditors = True
       InteractionOptions.ShowEditorTypes = [etLegend, etSeries, etTitle, etXAxis, etYAxis, etGeneral]
       Legend.Fill.Kind = gfkSolid
+      Legend.Fill.Color = clWhite
       Legend.Stroke.Kind = gskSolid
       Legend.Font.Charset = DEFAULT_CHARSET
-      Legend.Font.Color = clWindowText
+      Legend.Font.Color = -1
       Legend.Font.Height = -12
       Legend.Font.Name = 'Segoe UI'
       Legend.Font.Style = []
@@ -94,12 +98,13 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           Fill.Color = 16105559
           LegendText = 'Series 0'
           Labels.Font.Charset = DEFAULT_CHARSET
-          Labels.Font.Color = clWindowText
+          Labels.Font.Color = -1
           Labels.Font.Height = -12
           Labels.Font.Name = 'Segoe UI'
           Labels.Font.Style = []
           Labels.Format = '%.2f'
           Labels.OffsetY = -10.000000000000000000
+          Labels.Visible = True
           Markers.Fill.Color = 16105559
           Markers.Height = 10.000000000000000000
           Markers.Stroke.Color = 8020012
@@ -243,7 +248,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
               YValueMedian = 120.000000000000000000
             end>
           Legend.Font.Charset = DEFAULT_CHARSET
-          Legend.Font.Color = clWindowText
+          Legend.Font.Color = -1
           Legend.Font.Height = -12
           Legend.Font.Name = 'Segoe UI'
           Legend.Font.Style = []
@@ -252,7 +257,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           XGrid.Visible = True
           XValues.MajorUnit = 1.000000000000000000
           XValues.MajorUnitFont.Charset = DEFAULT_CHARSET
-          XValues.MajorUnitFont.Color = clWindowText
+          XValues.MajorUnitFont.Color = -1
           XValues.MajorUnitFont.Height = -12
           XValues.MajorUnitFont.Name = 'Segoe UI'
           XValues.MajorUnitFont.Style = []
@@ -261,7 +266,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           XValues.MajorUnitTickMarkSize = 10.000000000000000000
           XValues.MajorUnitTickMarkColor = clSilver
           XValues.MinorUnitFont.Charset = DEFAULT_CHARSET
-          XValues.MinorUnitFont.Color = clWindowText
+          XValues.MinorUnitFont.Color = -1
           XValues.MinorUnitFont.Height = -12
           XValues.MinorUnitFont.Name = 'Segoe UI'
           XValues.MinorUnitFont.Style = []
@@ -270,7 +275,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           XValues.MinorUnitTickMarkSize = 7.000000000000000000
           XValues.MinorUnitTickMarkColor = clSilver
           XValues.Title.Font.Charset = DEFAULT_CHARSET
-          XValues.Title.Font.Color = clWindowText
+          XValues.Title.Font.Color = -1
           XValues.Title.Font.Height = -12
           XValues.Title.Font.Name = 'Segoe UI'
           XValues.Title.Font.Style = []
@@ -283,7 +288,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           YGrid.Visible = True
           YValues.MajorUnit = 1.000000000000000000
           YValues.MajorUnitFont.Charset = DEFAULT_CHARSET
-          YValues.MajorUnitFont.Color = clWindowText
+          YValues.MajorUnitFont.Color = -1
           YValues.MajorUnitFont.Height = -12
           YValues.MajorUnitFont.Name = 'Segoe UI'
           YValues.MajorUnitFont.Style = []
@@ -292,7 +297,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           YValues.MajorUnitTickMarkSize = 10.000000000000000000
           YValues.MajorUnitTickMarkColor = clSilver
           YValues.MinorUnitFont.Charset = DEFAULT_CHARSET
-          YValues.MinorUnitFont.Color = clWindowText
+          YValues.MinorUnitFont.Color = -1
           YValues.MinorUnitFont.Height = -12
           YValues.MinorUnitFont.Name = 'Segoe UI'
           YValues.MinorUnitFont.Style = []
@@ -301,7 +306,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           YValues.MinorUnitTickMarkSize = 7.000000000000000000
           YValues.MinorUnitTickMarkColor = clSilver
           YValues.Title.Font.Charset = DEFAULT_CHARSET
-          YValues.Title.Font.Color = clWindowText
+          YValues.Title.Font.Color = -1
           YValues.Title.Font.Height = -12
           YValues.Title.Font.Name = 'Segoe UI'
           YValues.Title.Font.Style = []
@@ -314,14 +319,14 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           Crosshair.XTextStroke.Color = 16105559
           Crosshair.XTextFill.Color = 16105559
           Crosshair.XTextFont.Charset = DEFAULT_CHARSET
-          Crosshair.XTextFont.Color = clWhite
+          Crosshair.XTextFont.Color = -1
           Crosshair.XTextFont.Height = -12
           Crosshair.XTextFont.Name = 'Segoe UI'
           Crosshair.XTextFont.Style = []
           Crosshair.YTextStroke.Color = 16105559
           Crosshair.YTextFill.Color = 16105559
           Crosshair.YTextFont.Charset = DEFAULT_CHARSET
-          Crosshair.YTextFont.Color = clWhite
+          Crosshair.YTextFont.Color = -1
           Crosshair.YTextFont.Height = -12
           Crosshair.YTextFont.Name = 'Segoe UI'
           Crosshair.YTextFont.Style = []
@@ -343,7 +348,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           Fill.Color = 5644279
           LegendText = 'Series 1'
           Labels.Font.Charset = DEFAULT_CHARSET
-          Labels.Font.Color = clWindowText
+          Labels.Font.Color = -1
           Labels.Font.Height = -12
           Labels.Font.Name = 'Segoe UI'
           Labels.Font.Style = []
@@ -492,7 +497,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
               YValueMedian = 122.000000000000000000
             end>
           Legend.Font.Charset = DEFAULT_CHARSET
-          Legend.Font.Color = clWindowText
+          Legend.Font.Color = -1
           Legend.Font.Height = -12
           Legend.Font.Name = 'Segoe UI'
           Legend.Font.Style = []
@@ -500,7 +505,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           Stroke.Color = 5644279
           XValues.MajorUnit = 1.000000000000000000
           XValues.MajorUnitFont.Charset = DEFAULT_CHARSET
-          XValues.MajorUnitFont.Color = clWindowText
+          XValues.MajorUnitFont.Color = -1
           XValues.MajorUnitFont.Height = -12
           XValues.MajorUnitFont.Name = 'Segoe UI'
           XValues.MajorUnitFont.Style = []
@@ -509,7 +514,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           XValues.MajorUnitTickMarkSize = 10.000000000000000000
           XValues.MajorUnitTickMarkColor = clSilver
           XValues.MinorUnitFont.Charset = DEFAULT_CHARSET
-          XValues.MinorUnitFont.Color = clWindowText
+          XValues.MinorUnitFont.Color = -1
           XValues.MinorUnitFont.Height = -12
           XValues.MinorUnitFont.Name = 'Segoe UI'
           XValues.MinorUnitFont.Style = []
@@ -518,7 +523,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           XValues.MinorUnitTickMarkSize = 7.000000000000000000
           XValues.MinorUnitTickMarkColor = clSilver
           XValues.Title.Font.Charset = DEFAULT_CHARSET
-          XValues.Title.Font.Color = clWindowText
+          XValues.Title.Font.Color = -1
           XValues.Title.Font.Height = -12
           XValues.Title.Font.Name = 'Segoe UI'
           XValues.Title.Font.Style = []
@@ -530,7 +535,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           XValues.Positions = []
           YValues.MajorUnit = 1.000000000000000000
           YValues.MajorUnitFont.Charset = DEFAULT_CHARSET
-          YValues.MajorUnitFont.Color = clWindowText
+          YValues.MajorUnitFont.Color = -1
           YValues.MajorUnitFont.Height = -12
           YValues.MajorUnitFont.Name = 'Segoe UI'
           YValues.MajorUnitFont.Style = []
@@ -539,7 +544,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           YValues.MajorUnitTickMarkSize = 10.000000000000000000
           YValues.MajorUnitTickMarkColor = clSilver
           YValues.MinorUnitFont.Charset = DEFAULT_CHARSET
-          YValues.MinorUnitFont.Color = clWindowText
+          YValues.MinorUnitFont.Color = -1
           YValues.MinorUnitFont.Height = -12
           YValues.MinorUnitFont.Name = 'Segoe UI'
           YValues.MinorUnitFont.Style = []
@@ -548,7 +553,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           YValues.MinorUnitTickMarkSize = 7.000000000000000000
           YValues.MinorUnitTickMarkColor = clSilver
           YValues.Title.Font.Charset = DEFAULT_CHARSET
-          YValues.Title.Font.Color = clWindowText
+          YValues.Title.Font.Color = -1
           YValues.Title.Font.Height = -12
           YValues.Title.Font.Name = 'Segoe UI'
           YValues.Title.Font.Style = []
@@ -561,14 +566,14 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           Crosshair.XTextStroke.Color = 5644279
           Crosshair.XTextFill.Color = 5644279
           Crosshair.XTextFont.Charset = DEFAULT_CHARSET
-          Crosshair.XTextFont.Color = clWhite
+          Crosshair.XTextFont.Color = -1
           Crosshair.XTextFont.Height = -12
           Crosshair.XTextFont.Name = 'Segoe UI'
           Crosshair.XTextFont.Style = []
           Crosshair.YTextStroke.Color = 5644279
           Crosshair.YTextFill.Color = 5644279
           Crosshair.YTextFont.Charset = DEFAULT_CHARSET
-          Crosshair.YTextFont.Color = clWhite
+          Crosshair.YTextFont.Color = -1
           Crosshair.YTextFont.Height = -12
           Crosshair.YTextFont.Name = 'Segoe UI'
           Crosshair.YTextFont.Style = []
@@ -590,7 +595,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           Fill.Color = 7936771
           LegendText = 'Series 2'
           Labels.Font.Charset = DEFAULT_CHARSET
-          Labels.Font.Color = clWindowText
+          Labels.Font.Color = -1
           Labels.Font.Height = -12
           Labels.Font.Name = 'Segoe UI'
           Labels.Font.Style = []
@@ -739,7 +744,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
               YValueMedian = 52.000000000000000000
             end>
           Legend.Font.Charset = DEFAULT_CHARSET
-          Legend.Font.Color = clWindowText
+          Legend.Font.Color = -1
           Legend.Font.Height = -12
           Legend.Font.Name = 'Segoe UI'
           Legend.Font.Style = []
@@ -747,7 +752,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           Stroke.Color = 7936771
           XValues.MajorUnit = 1.000000000000000000
           XValues.MajorUnitFont.Charset = DEFAULT_CHARSET
-          XValues.MajorUnitFont.Color = clWindowText
+          XValues.MajorUnitFont.Color = -1
           XValues.MajorUnitFont.Height = -12
           XValues.MajorUnitFont.Name = 'Segoe UI'
           XValues.MajorUnitFont.Style = []
@@ -756,7 +761,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           XValues.MajorUnitTickMarkSize = 10.000000000000000000
           XValues.MajorUnitTickMarkColor = clSilver
           XValues.MinorUnitFont.Charset = DEFAULT_CHARSET
-          XValues.MinorUnitFont.Color = clWindowText
+          XValues.MinorUnitFont.Color = -1
           XValues.MinorUnitFont.Height = -12
           XValues.MinorUnitFont.Name = 'Segoe UI'
           XValues.MinorUnitFont.Style = []
@@ -765,7 +770,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           XValues.MinorUnitTickMarkSize = 7.000000000000000000
           XValues.MinorUnitTickMarkColor = clSilver
           XValues.Title.Font.Charset = DEFAULT_CHARSET
-          XValues.Title.Font.Color = clWindowText
+          XValues.Title.Font.Color = -1
           XValues.Title.Font.Height = -12
           XValues.Title.Font.Name = 'Segoe UI'
           XValues.Title.Font.Style = []
@@ -777,7 +782,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           XValues.Positions = []
           YValues.MajorUnit = 1.000000000000000000
           YValues.MajorUnitFont.Charset = DEFAULT_CHARSET
-          YValues.MajorUnitFont.Color = clWindowText
+          YValues.MajorUnitFont.Color = -1
           YValues.MajorUnitFont.Height = -12
           YValues.MajorUnitFont.Name = 'Segoe UI'
           YValues.MajorUnitFont.Style = []
@@ -786,7 +791,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           YValues.MajorUnitTickMarkSize = 10.000000000000000000
           YValues.MajorUnitTickMarkColor = clSilver
           YValues.MinorUnitFont.Charset = DEFAULT_CHARSET
-          YValues.MinorUnitFont.Color = clWindowText
+          YValues.MinorUnitFont.Color = -1
           YValues.MinorUnitFont.Height = -12
           YValues.MinorUnitFont.Name = 'Segoe UI'
           YValues.MinorUnitFont.Style = []
@@ -795,7 +800,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           YValues.MinorUnitTickMarkSize = 7.000000000000000000
           YValues.MinorUnitTickMarkColor = clSilver
           YValues.Title.Font.Charset = DEFAULT_CHARSET
-          YValues.Title.Font.Color = clWindowText
+          YValues.Title.Font.Color = -1
           YValues.Title.Font.Height = -12
           YValues.Title.Font.Name = 'Segoe UI'
           YValues.Title.Font.Style = []
@@ -808,14 +813,14 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           Crosshair.XTextStroke.Color = 7936771
           Crosshair.XTextFill.Color = 7936771
           Crosshair.XTextFont.Charset = DEFAULT_CHARSET
-          Crosshair.XTextFont.Color = clWhite
+          Crosshair.XTextFont.Color = -1
           Crosshair.XTextFont.Height = -12
           Crosshair.XTextFont.Name = 'Segoe UI'
           Crosshair.XTextFont.Style = []
           Crosshair.YTextStroke.Color = 7936771
           Crosshair.YTextFill.Color = 7936771
           Crosshair.YTextFont.Charset = DEFAULT_CHARSET
-          Crosshair.YTextFont.Color = clWhite
+          Crosshair.YTextFont.Color = -1
           Crosshair.YTextFont.Height = -12
           Crosshair.YTextFont.Name = 'Segoe UI'
           Crosshair.YTextFont.Style = []
@@ -824,7 +829,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
         end>
       Title.Stroke.Kind = gskSolid
       Title.Font.Charset = DEFAULT_CHARSET
-      Title.Font.Color = clWindowText
+      Title.Font.Color = -1
       Title.Font.Height = -12
       Title.Font.Name = 'Segoe UI'
       Title.Font.Style = []
@@ -844,14 +849,17 @@ object ChartDatabaseMainView: TChartDatabaseMainView
       DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
       Align = alClient
       TabOrder = 0
+      ExplicitWidth = 1107
+      ExplicitHeight = 656
     end
-    object Panel1: TPanel
-      Left = 1139
+    object pnBotoes: TPanel
+      Left = 926
       Top = 1
       Width = 158
-      Height = 618
+      Height = 527
       Align = alRight
       TabOrder = 1
+      ExplicitLeft = 930
       object lbStatusDataBase: TLabel
         AlignWithMargins = True
         Left = 4
@@ -873,7 +881,6 @@ object ChartDatabaseMainView: TChartDatabaseMainView
         Margins.Top = 50
         Align = alTop
         Caption = 'ChartType'
-        ExplicitTop = 124
         ExplicitWidth = 54
       end
       object Label2: TLabel
@@ -885,7 +892,6 @@ object ChartDatabaseMainView: TChartDatabaseMainView
         Margins.Left = 5
         Align = alTop
         Caption = 'Esquema de cores'
-        ExplicitTop = 171
         ExplicitWidth = 95
       end
       object btnAbrir: TBitBtn
@@ -898,6 +904,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
         Caption = 'Conectar / desconectatar'
         TabOrder = 0
         OnClick = btnAbrirClick
+        ExplicitLeft = 6
       end
       object cBoxChartType: TComboBox
         AlignWithMargins = True
@@ -961,50 +968,55 @@ object ChartDatabaseMainView: TChartDatabaseMainView
       object btnConfigurarGrafico: TBitBtn
         AlignWithMargins = True
         Left = 4
-        Top = 574
+        Top = 483
         Width = 150
         Height = 40
         Align = alBottom
         Caption = 'Configurar gr'#225'fico'
         TabOrder = 6
         OnClick = btnConfigurarGraficoClick
+        ExplicitTop = 612
       end
       object btnSalvarGrafico: TButton
-        Left = 1
-        Top = 546
-        Width = 156
+        AlignWithMargins = True
+        Left = 4
+        Top = 452
+        Width = 150
         Height = 25
         Align = alBottom
         Caption = 'Salvar gr'#225'fico'
         TabOrder = 7
         OnClick = btnSalvarGraficoClick
-        ExplicitLeft = 16
-        ExplicitTop = 392
-        ExplicitWidth = 75
+        ExplicitTop = 581
+      end
+      object btnModoDark: TButton
+        AlignWithMargins = True
+        Left = 4
+        Top = 421
+        Width = 150
+        Height = 25
+        Align = alBottom
+        Caption = 'Modo Dark'
+        TabOrder = 8
+        OnClick = btnModoDarkClick
+        ExplicitTop = 550
+      end
+      object btnModoLight: TButton
+        AlignWithMargins = True
+        Left = 4
+        Top = 390
+        Width = 150
+        Height = 25
+        Align = alBottom
+        Caption = 'Modo Light'
+        TabOrder = 9
+        OnClick = btnModoLightClick
+        ExplicitTop = 519
       end
     end
   end
-  object pnBotoes: TPanel
-    Left = 0
-    Top = 620
-    Width = 1298
-    Height = 40
-    Align = alBottom
-    TabOrder = 1
-    object Panel3: TPanel
-      Left = 1
-      Top = 1
-      Width = 296
-      Height = 38
-      Align = alLeft
-      BevelOuter = bvNone
-      Padding.Left = 3
-      Padding.Top = 8
-      TabOrder = 0
-    end
-  end
   object TMSFNCChartDatabaseAdapter1: TTMSFNCChartDatabaseAdapter
-    Left = 896
+    Left = 898
     Top = 61
     Width = 26
     Height = 26
