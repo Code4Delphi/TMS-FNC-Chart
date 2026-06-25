@@ -92,11 +92,11 @@ type
     procedure PreenchercBoxEsquemaCores;
     procedure ConfigTemaLabels(const ATemaDark: Boolean = False);
     procedure ConfigChart;
-    procedure ConfigChartLinhaPorGrupo;
+    procedure ConfigChartSeriePorGrupo;
     procedure PrepararAdapter;
     function ChartTypeSelecionado: TTMSFNCChartSerieType;
     function CorSerie(const AIndex: Integer): TTMSFNCGraphicsColor;
-    function ChartTypeLinhaSelecionado: Boolean;
+    function ChartTypeSeriePorGrupoSelecionado: Boolean;
   public
 
   end;
@@ -161,8 +161,8 @@ begin
     Exit;
   end;
 
-  if Self.ChartTypeLinhaSelecionado then
-    Self.ConfigChartLinhaPorGrupo
+  if Self.ChartTypeSeriePorGrupoSelecionado then
+    Self.ConfigChartSeriePorGrupo
   else
   begin
     Self.PrepararAdapter;
@@ -190,6 +190,7 @@ procedure TChartDatabaseVendasView.TMSFNCChartDatabaseAdapter1FieldsToPoint(Send
   ASeries: TTMSFNCChartSerie; APoint: TTMSFNCChartPoint);
 begin
   APoint.LegendText := APoint.XValueText;
+  APoint.Color := Self.CorSerie(Pred(AFields.FieldByName(FDQuery1id_grupo.FieldName).AsInteger));
 end;
 
 procedure TChartDatabaseVendasView.btnAplicarAlteracoesClick(Sender: TObject);
@@ -201,9 +202,9 @@ procedure TChartDatabaseVendasView.ConfigChart;
 var
   LSerieChart: TTMSFNCChartSerie;
 begin
-  if Self.ChartTypeLinhaSelecionado then
+  if Self.ChartTypeSeriePorGrupoSelecionado then
   begin
-    Self.ConfigChartLinhaPorGrupo;
+    Self.ConfigChartSeriePorGrupo;
     Exit;
   end;
 
@@ -247,7 +248,7 @@ begin
   LSeriesItem.XLabel := FDQuery1nome_grupo.FieldName;
 end;
 
-procedure TChartDatabaseVendasView.ConfigChartLinhaPorGrupo;
+procedure TChartDatabaseVendasView.ConfigChartSeriePorGrupo;
 var
   LSeries: array[1..5] of TTMSFNCChartSerie;
 begin
@@ -284,7 +285,7 @@ begin
           begin
             var LCor := Self.CorSerie(Pred(LIdGrupo));
             LSeries[LIdGrupo] := TMSFNCChart1.Series.Add;
-            LSeries[LIdGrupo].ChartType := TTMSFNCChartSerieType.ctLine;
+            LSeries[LIdGrupo].ChartType := Self.ChartTypeSelecionado;
             LSeries[LIdGrupo].LegendText := LQuery.FieldByName('nome_grupo').AsString;
             LSeries[LIdGrupo].ShowInLegend := True;
             LSeries[LIdGrupo].Legend.Visible := False;
@@ -294,6 +295,7 @@ begin
             LSeries[LIdGrupo].AutoYRange := arCommonZeroBased;
             LSeries[LIdGrupo].Stroke.Color := LCor;
             LSeries[LIdGrupo].Fill.Color := LCor;
+            LSeries[LIdGrupo].Fill.Opacity := 0.45;
             LSeries[LIdGrupo].Markers.Fill.Color := LCor;
             LSeries[LIdGrupo].Markers.Stroke.Color := LCor;
 
@@ -337,9 +339,9 @@ begin
   Result := gcNull;
 end;
 
-function TChartDatabaseVendasView.ChartTypeLinhaSelecionado: Boolean;
+function TChartDatabaseVendasView.ChartTypeSeriePorGrupoSelecionado: Boolean;
 begin
-  Result := Self.ChartTypeSelecionado = TTMSFNCChartSerieType.ctLine;
+  Result := Self.ChartTypeSelecionado in [TTMSFNCChartSerieType.ctLine, TTMSFNCChartSerieType.ctArea];
 end;
 function TChartDatabaseVendasView.ChartTypeSelecionado: TTMSFNCChartSerieType;
 begin
