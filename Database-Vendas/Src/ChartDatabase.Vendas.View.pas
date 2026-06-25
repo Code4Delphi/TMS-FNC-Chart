@@ -90,6 +90,7 @@ type
     procedure PreenchercBoxEsquemaCores;
     procedure ConfigTemaLabels(const ATemaDark: Boolean = False);
     procedure ConfigChart;
+    procedure ConfigLegendaPizza(const ASerieChart: TTMSFNCChartSerie);
   public
 
   end;
@@ -199,11 +200,31 @@ begin
     LSerieChart.LegendText := 'Vendas por grupo';
     LSerieChart.Markers.Visible := ckMostrarMarcador.Checked;
     LSerieChart.Labels.Visible := ckMostrarLabels.Checked;
+    Self.ConfigLegendaPizza(LSerieChart);
   end;
 
   TMSFNCChart1.Appearance.ColorScheme := TTMSFNCChartColorScheme(cBoxEsquemaCores.ItemIndex);
 end;
 
+procedure TChartDatabaseVendasView.ConfigLegendaPizza(const ASerieChart: TTMSFNCChartSerie);
+begin
+  if not (ASerieChart.ChartType in [TTMSFNCChartSerieType.ctPie, TTMSFNCChartSerieType.ctVariableRadiusPie,
+    TTMSFNCChartSerieType.ctSizedPie]) then
+  begin
+    ASerieChart.ShowInLegend := True;
+    ASerieChart.Legend.Visible := False;
+    Exit;
+  end;
+
+  ASerieChart.ShowInLegend := False;
+  ASerieChart.Legend.Visible := True;
+  ASerieChart.Legend.Position := TTMSFNCChartLegendPosition.lpTopLeft;
+
+  for var i := 0 to Pred(ASerieChart.Points.Count) do
+    ASerieChart.Points[i].LegendText := ASerieChart.Points[i].XValueText;
+end;
+
+{$REGION 'Extras'}
 procedure TChartDatabaseVendasView.btnConfigurarGraficoClick(Sender: TObject);
 begin
   TMSFNCChart1.ShowEditor(TTMSFNCChartEditorType.etGeneral);
@@ -282,5 +303,6 @@ begin
      lbStatusDataBase.Font.Color := clWindow;
   end;
 end;
+{$ENDREGION}
 
 end.
