@@ -6,7 +6,6 @@ uses
   Winapi.Windows,
   Winapi.Messages,
   TypInfo,
-  System.Types,
   System.IOUtils,
   System.SysUtils,
   System.Variants,
@@ -81,20 +80,19 @@ type
     procedure btnAbrirClick(Sender: TObject);
     procedure btnAplicarAlteracoesClick(Sender: TObject);
     procedure TMSFNCChartDatabaseAdapter1FieldsToSeries(Sender: TObject; AFields: TFields; ASeries: TTMSFNCChartSerie);
+    procedure TMSFNCChartDatabaseAdapter1FieldsToPoint(Sender: TObject; AFields: TFields; ASeries: TTMSFNCChartSerie;
+      APoint: TTMSFNCChartPoint);
     procedure btnConfigurarGraficoClick(Sender: TObject);
     procedure btnSalvarGraficoClick(Sender: TObject);
     procedure btnModoDarkClick(Sender: TObject);
     procedure btnModoLightClick(Sender: TObject);
-    procedure TMSFNCChart1BeforeDrawSerieLegendIcon(Sender: TObject; AGraphics: TTMSFNCGraphics;
-      ASerie: TTMSFNCChartSerie; APoint: TTMSFNCChartPoint; ARect: TRectF; var ADefaultDraw: Boolean);
   private
     procedure BuscarDados;
     procedure PreenchercBoxChartType;
     procedure PreenchercBoxEsquemaCores;
     procedure ConfigTemaLabels(const ATemaDark: Boolean = False);
     procedure ConfigChart;
-    procedure ConfigLegendaPorGrupo(const ASerieChart: TTMSFNCChartSerie);
-    function GetCorGrupo(const AIndex: Integer): TTMSFNCGraphicsColor;
+    function ChartTypeSelecionado: TTMSFNCChartSerieType;
   public
 
   end;
@@ -108,7 +106,8 @@ implementation
 
 procedure TChartDatabaseVendasView.FormCreate(Sender: TObject);
 begin
-  TMSFNCChart1.OnBeforeDrawSerieLegendIcon := Self.TMSFNCChart1BeforeDrawSerieLegendIcon;
+  FDConnection1.Params.Values['Database'] := TPath.Combine(ExtractFilePath(ParamStr(0)), '..\Data\vendas.db');
+
   Self.PreenchercBoxChartType;
   Self.PreenchercBoxEsquemaCores;
   Self.BuscarDados;
@@ -143,7 +142,7 @@ begin
   TMSFNCChartDatabaseAdapter1.Active := False;
   FDQuery1.Close;
   FDConnection1.Connected := False;
-  FDConnection1.Params.Values['Database'] := TPath.Combine(ExtractFilePath(ParamStr(0)), '..\Data\vendas.db');
+
   FDConnection1.Connected := True;
   FDQuery1.Open;
 end;
@@ -174,12 +173,21 @@ end;
 
 procedure TChartDatabaseVendasView.TMSFNCChartDatabaseAdapter1FieldsToSeries(Sender: TObject; AFields: TFields; ASeries: TTMSFNCChartSerie);
 begin
-  ASeries.ChartType := TTMSFNCChartSerieType(cBoxChartType.ItemIndex);
+  ASeries.ChartType := Self.ChartTypeSelecionado;
   ASeries.LegendText := 'Vendas por grupo';
+  ASeries.ShowInLegend := False;
+  ASeries.Legend.Visible := True;
+  ASeries.Legend.Position := TTMSFNCChartLegendPosition.lpTopLeft;
   ASeries.Markers.Visible := ckMostrarMarcador.Checked;
   ASeries.Labels.Visible := ckMostrarLabels.Checked;
   ASeries.YValues.Title.Text := 'Total em vendas';
   ASeries.XValues.Title.Text := 'Grupos';
+end;
+
+procedure TChartDatabaseVendasView.TMSFNCChartDatabaseAdapter1FieldsToPoint(Sender: TObject; AFields: TFields;
+  ASeries: TTMSFNCChartSerie; APoint: TTMSFNCChartPoint);
+begin
+  APoint.LegendText := APoint.XValueText;
 end;
 
 procedure TChartDatabaseVendasView.btnAplicarAlteracoesClick(Sender: TObject);
@@ -203,43 +211,24 @@ begin
   for var i := 0 to Pred(TMSFNCChart1.Series.Count) do
   begin
     LSerieChart := TMSFNCChart1.Series[i];
-    LSerieChart.ChartType := TTMSFNCChartSerieType(cBoxChartType.ItemIndex);
+    LSerieChart.ChartType := Self.ChartTypeSelecionado;
     LSerieChart.LegendText := 'Vendas por grupo';
+    LSerieChart.ShowInLegend := False;
+    LSerieChart.Legend.Visible := True;
+    LSerieChart.Legend.Position := TTMSFNCChartLegendPosition.lpTopLeft;
     LSerieChart.Markers.Visible := ckMostrarMarcador.Checked;
     LSerieChart.Labels.Visible := ckMostrarLabels.Checked;
-    Self.ConfigLegendaPorGrupo(LSerieChart);
   end;
 end;
 
-function TChartDatabaseVendasView.GetCorGrupo(const AIndex: Integer): TTMSFNCGraphicsColor;
+function TChartDatabaseVendasView.ChartTypeSelecionado: TTMSFNCChartSerieType;
 begin
-  if TMSFNCChart1.Appearance.ColorList.Count > 0 then
-    Exit(TMSFNCChart1.Appearance.ColorList[AIndex mod TMSFNCChart1.Appearance.ColorList.Count].Color);
+  var LValue := GetEnumValue(TypeInfo(TTMSFNCChartSerieType), cBoxChartType.Text);
 
-  Result := gcNull;
-end;
+  if LValue < 0 then
+    Exit(TTMSFNCChartSerieType.ctPie);
 
-procedure TChartDatabaseVendasView.ConfigLegendaPorGrupo(const ASerieChart: TTMSFNCChartSerie);
-begin
-  if not (ASerieChart.ChartType in [TTMSFNCChartSerieType.ctPie, TTMSFNCChartSerieType.ctVariableRadiusPie,
-    TTMSFNCChartSerieType.ctSizedPie, TTMSFNCChartSerieType.ctBar]) then
-  begin
-    ASerieChart.ShowInLegend := True;
-    ASerieChart.Legend.Visible := False;
-    Exit;
-  end;
-
-  ASerieChart.ShowInLegend := False;
-  ASerieChart.Legend.Visible := True;
-  ASerieChart.Legend.Position := TTMSFNCChartLegendPosition.lpTopLeft;
-
-  for var i := 0 to Pred(ASerieChart.Points.Count) do
-  begin
-    ASerieChart.Points[i].LegendText := ASerieChart.Points[i].XValueText;
-
-    if ASerieChart.ChartType = TTMSFNCChartSerieType.ctBar then
-      ASerieChart.Points[i].Color := Self.GetCorGrupo(i);
-  end;
+  Result := TTMSFNCChartSerieType(LValue);
 end;
 
 {$REGION 'Extras'}
@@ -264,24 +253,6 @@ begin
   finally
     LSaveDialog.Free;
   end;
-end;
-
-procedure TChartDatabaseVendasView.TMSFNCChart1BeforeDrawSerieLegendIcon(Sender: TObject; AGraphics: TTMSFNCGraphics;
-  ASerie: TTMSFNCChartSerie; APoint: TTMSFNCChartPoint; ARect: TRectF; var ADefaultDraw: Boolean);
-begin
-  if not Assigned(APoint) then
-    Exit;
-
-  if not (ASerie.ChartType in [TTMSFNCChartSerieType.ctPie, TTMSFNCChartSerieType.ctVariableRadiusPie,
-    TTMSFNCChartSerieType.ctSizedPie, TTMSFNCChartSerieType.ctBar]) then
-    Exit;
-
-  ADefaultDraw := False;
-  AGraphics.Fill.Kind := gfkSolid;
-  AGraphics.Fill.Color := APoint.Color;
-  AGraphics.Stroke.Kind := gskSolid;
-  AGraphics.Stroke.Color := APoint.Color;
-  AGraphics.DrawRectangle(ARect);
 end;
 
 procedure TChartDatabaseVendasView.btnModoLightClick(Sender: TObject);

@@ -117,6 +117,7 @@ object ChartDatabaseVendasView: TChartDatabaseVendasView
         Source.DataSource = DataSource1
         Source.Series = <>
         OnFieldsToSeries = TMSFNCChartDatabaseAdapter1FieldsToSeries
+        OnFieldsToPoint = TMSFNCChartDatabaseAdapter1FieldsToPoint
       end
     end
     object pnBotoes: TPanel
