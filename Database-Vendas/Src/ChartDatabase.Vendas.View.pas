@@ -93,10 +93,12 @@ type
     procedure ConfigTemaLabels(const ATemaDark: Boolean = False);
     procedure ConfigChart;
     procedure ConfigChartSeriePorGrupo;
+    procedure ConfigChartXYLinePorGrupo;
     procedure PrepararAdapter;
     function ChartTypeSelecionado: TTMSFNCChartSerieType;
     function CorSerie(const AIndex: Integer): TTMSFNCGraphicsColor;
     function ChartTypeSeriePorGrupoSelecionado: Boolean;
+    function ChartTypeXYLineSelecionado: Boolean;
   public
 
   end;
@@ -161,7 +163,9 @@ begin
     Exit;
   end;
 
-  if Self.ChartTypeSeriePorGrupoSelecionado then
+  if Self.ChartTypeXYLineSelecionado then
+    Self.ConfigChartXYLinePorGrupo
+  else if Self.ChartTypeSeriePorGrupoSelecionado then
     Self.ConfigChartSeriePorGrupo
   else
   begin
@@ -202,6 +206,12 @@ procedure TChartDatabaseVendasView.ConfigChart;
 var
   LSerieChart: TTMSFNCChartSerie;
 begin
+  if Self.ChartTypeXYLineSelecionado then
+  begin
+    Self.ConfigChartXYLinePorGrupo;
+    Exit;
+  end;
+
   if Self.ChartTypeSeriePorGrupoSelecionado then
   begin
     Self.ConfigChartSeriePorGrupo;
@@ -331,6 +341,92 @@ begin
   end;
 end;
 
+procedure TChartDatabaseVendasView.ConfigChartXYLinePorGrupo;
+var
+  LSeries: array[1..5] of TTMSFNCChartSerie;
+begin
+  TMSFNCChartDatabaseAdapter1.Active := False;
+  TMSFNCChart1.BeginUpdate;
+  try
+    TMSFNCChart1.Series.Clear;
+    TMSFNCChart1.Appearance.ColorScheme := TTMSFNCChartColorScheme(cBoxEsquemaCores.ItemIndex);
+    TMSFNCChart1.Legend.Visible := True;
+
+    for var i := Low(LSeries) to High(LSeries) do
+      LSeries[i] := nil;
+
+    var LQuery := TFDQuery.Create(nil);
+    try
+      LQuery.Connection := FDConnection1;
+      LQuery.SQL.Add('select');
+      LQuery.SQL.Add('  cast(strftime("%m", data_venda) as integer) as mes_numero,');
+      LQuery.SQL.Add('  strftime("%m/%Y", data_venda) as mes_venda,');
+      LQuery.SQL.Add('  id_grupo,');
+      LQuery.SQL.Add('  nome_grupo,');
+      LQuery.SQL.Add('  sum(valor_total) as TotalVendas');
+      LQuery.SQL.Add('from vendas');
+      LQuery.SQL.Add('group by strftime("%Y-%m", data_venda), mes_numero, mes_venda, id_grupo, nome_grupo');
+      LQuery.SQL.Add('order by id_grupo, strftime("%Y-%m", data_venda)');
+      LQuery.Open;
+
+      while not LQuery.Eof do
+      begin
+        var LIdGrupo := LQuery.FieldByName('id_grupo').AsInteger;
+
+        if (LIdGrupo >= Low(LSeries)) and (LIdGrupo <= High(LSeries)) then
+        begin
+          if not Assigned(LSeries[LIdGrupo]) then
+          begin
+            var LCor := Self.CorSerie(Pred(LIdGrupo));
+            LSeries[LIdGrupo] := TMSFNCChart1.Series.Add;
+            LSeries[LIdGrupo].ChartType := TTMSFNCChartSerieType.ctXYLine;
+            LSeries[LIdGrupo].LegendText := LQuery.FieldByName('nome_grupo').AsString;
+            LSeries[LIdGrupo].ShowInLegend := True;
+            LSeries[LIdGrupo].Legend.Visible := False;
+            LSeries[LIdGrupo].Markers.Visible := ckMostrarMarcador.Checked;
+            LSeries[LIdGrupo].Labels.Visible := ckMostrarLabels.Checked;
+            LSeries[LIdGrupo].AutoXRange := arCommon;
+            LSeries[LIdGrupo].AutoYRange := arCommonZeroBased;
+            LSeries[LIdGrupo].Stroke.Color := LCor;
+            LSeries[LIdGrupo].Fill.Color := LCor;
+            LSeries[LIdGrupo].Markers.Fill.Color := LCor;
+            LSeries[LIdGrupo].Markers.Stroke.Color := LCor;
+            LSeries[LIdGrupo].XValues.MajorUnitSpacing := 1;
+            LSeries[LIdGrupo].XValues.MajorUnitFormat := '%.0f';
+            LSeries[LIdGrupo].XValues.MajorUnitFormatType := vftNormal;
+
+            if LIdGrupo = Low(LSeries) then
+            begin
+              LSeries[LIdGrupo].YValues.Positions := [TTMSFNCChartYAxisPosition.ypLeft];
+              LSeries[LIdGrupo].XValues.Positions := [TTMSFNCChartXAxisPosition.xpBottom];
+              LSeries[LIdGrupo].YGrid.Visible := True;
+              LSeries[LIdGrupo].XGrid.Visible := True;
+              LSeries[LIdGrupo].YValues.Title.Text := 'Total em vendas';
+              LSeries[LIdGrupo].XValues.Title.Text := 'Mes';
+            end
+            else
+            begin
+              LSeries[LIdGrupo].YValues.Positions := [];
+              LSeries[LIdGrupo].XValues.Positions := [];
+              LSeries[LIdGrupo].YGrid.Visible := False;
+              LSeries[LIdGrupo].XGrid.Visible := False;
+            end;
+          end;
+
+          LSeries[LIdGrupo].AddXYPoint(LQuery.FieldByName('mes_numero').AsFloat,
+            LQuery.FieldByName('TotalVendas').AsFloat, LQuery.FieldByName('mes_venda').AsString, gcNull,
+            LQuery.FieldByName('nome_grupo').AsString);
+        end;
+
+        LQuery.Next;
+      end;
+    finally
+      LQuery.Free;
+    end;
+  finally
+    TMSFNCChart1.EndUpdate;
+  end;
+end;
 function TChartDatabaseVendasView.CorSerie(const AIndex: Integer): TTMSFNCGraphicsColor;
 begin
   if TMSFNCChart1.Appearance.ColorList.Count > 0 then
@@ -343,6 +439,11 @@ function TChartDatabaseVendasView.ChartTypeSeriePorGrupoSelecionado: Boolean;
 begin
   Result := Self.ChartTypeSelecionado in [TTMSFNCChartSerieType.ctLine, TTMSFNCChartSerieType.ctArea];
 end;
+function TChartDatabaseVendasView.ChartTypeXYLineSelecionado: Boolean;
+begin
+  Result := Self.ChartTypeSelecionado = TTMSFNCChartSerieType.ctXYLine;
+end;
+
 function TChartDatabaseVendasView.ChartTypeSelecionado: TTMSFNCChartSerieType;
 begin
   var LValue := GetEnumValue(TypeInfo(TTMSFNCChartSerieType), cBoxChartType.Text);
