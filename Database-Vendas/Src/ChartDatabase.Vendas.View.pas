@@ -188,6 +188,12 @@ begin
   ASeries.Labels.Visible := ckMostrarLabels.Checked;
   ASeries.YValues.Title.Text := 'Total em vendas';
   ASeries.XValues.Title.Text := 'Grupos';
+
+  if ASeries.ChartType = TTMSFNCChartSerieType.ctSpider then
+  begin
+    ASeries.Fill.Opacity := 0.35;
+    ASeries.Stroke.Color := Self.CorSerie(0);
+  end;
 end;
 
 procedure TChartDatabaseVendasView.TMSFNCChartDatabaseAdapter1FieldsToPoint(Sender: TObject; AFields: TFields;
