@@ -20,8 +20,6 @@ object ChartDatabaseMainView: TChartDatabaseMainView
     Height = 723
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 1085
-    ExplicitHeight = 529
     object TMSFNCChart1: TTMSFNCChart
       Left = 1
       Top = 1
@@ -859,7 +857,6 @@ object ChartDatabaseMainView: TChartDatabaseMainView
       TabStop = False
       ParentColor = True
       TabOrder = 0
-      ExplicitTop = -2
     end
     object pnBotoes: TPanel
       Left = 1
@@ -877,7 +874,6 @@ object ChartDatabaseMainView: TChartDatabaseMainView
         Align = alLeft
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitHeight = 94
         object lbStatusDataBase: TLabel
           AlignWithMargins = True
           Left = 3
@@ -887,7 +883,6 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           Align = alTop
           Alignment = taCenter
           Caption = 'Desconectado'
-          ExplicitTop = 49
           ExplicitWidth = 75
         end
         object btnAbrir: TBitBtn
@@ -911,8 +906,6 @@ object ChartDatabaseMainView: TChartDatabaseMainView
         Align = alLeft
         BevelOuter = bvNone
         TabOrder = 1
-        ExplicitLeft = 150
-        ExplicitTop = 6
         object lbChartType: TLabel
           AlignWithMargins = True
           Left = 5
@@ -924,7 +917,6 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           Margins.Bottom = 2
           Align = alTop
           Caption = 'ChartType'
-          ExplicitTop = 3
           ExplicitWidth = 54
         end
         object lbEsquemaCores: TLabel
@@ -938,7 +930,6 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           Margins.Bottom = 2
           Align = alTop
           Caption = 'Esquema de cores'
-          ExplicitTop = 24
           ExplicitWidth = 95
         end
         object cBoxChartType: TComboBox
@@ -954,7 +945,6 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           DropDownCount = 19
           TabOrder = 0
           OnChange = btnAplicarAlteracoesClick
-          ExplicitTop = 21
         end
         object cBoxEsquemaCores: TComboBox
           AlignWithMargins = True
@@ -969,9 +959,6 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           DropDownCount = 19
           TabOrder = 1
           OnChange = btnAplicarAlteracoesClick
-          ExplicitLeft = 4
-          ExplicitTop = 183
-          ExplicitWidth = 150
         end
       end
       object Panel5: TPanel
@@ -982,12 +969,10 @@ object ChartDatabaseMainView: TChartDatabaseMainView
         Align = alLeft
         BevelOuter = bvNone
         TabOrder = 2
-        ExplicitLeft = 338
-        ExplicitHeight = 116
         object btnAplicarAlteracoes: TBitBtn
           AlignWithMargins = True
           Left = 3
-          Top = 3
+          Top = 47
           Width = 117
           Height = 22
           Cursor = crHandPoint
@@ -999,7 +984,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
         object ckMostrarMarcador: TCheckBox
           AlignWithMargins = True
           Left = 3
-          Top = 54
+          Top = 26
           Width = 117
           Height = 17
           Cursor = crHandPoint
@@ -1009,14 +994,11 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           Checked = True
           State = cbChecked
           TabOrder = 1
-          ExplicitLeft = 6
-          ExplicitTop = 57
-          ExplicitWidth = 179
         end
         object ckMostrarLabels: TCheckBox
           AlignWithMargins = True
           Left = 3
-          Top = 31
+          Top = 3
           Width = 117
           Height = 17
           Cursor = crHandPoint
@@ -1031,9 +1013,6 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           ParentFont = False
           State = cbChecked
           TabOrder = 2
-          ExplicitLeft = 6
-          ExplicitTop = 57
-          ExplicitWidth = 179
         end
       end
       object Panel6: TPanel
@@ -1044,7 +1023,6 @@ object ChartDatabaseMainView: TChartDatabaseMainView
         Align = alLeft
         BevelOuter = bvNone
         TabOrder = 3
-        ExplicitHeight = 94
         object btnConfigurarGrafico: TBitBtn
           AlignWithMargins = True
           Left = 3
@@ -1058,9 +1036,6 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           Caption = 'Configurar gr'#225'fico'
           TabOrder = 0
           OnClick = btnConfigurarGraficoClick
-          ExplicitLeft = 6
-          ExplicitTop = 92
-          ExplicitWidth = 179
         end
         object btnSalvarGrafico: TButton
           AlignWithMargins = True
@@ -1075,8 +1050,6 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           Caption = 'Salvar gr'#225'fico'
           TabOrder = 1
           OnClick = btnSalvarGraficoClick
-          ExplicitTop = 40
-          ExplicitWidth = 179
         end
         object btnModoDark: TButton
           AlignWithMargins = True
@@ -1091,8 +1064,6 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           Caption = 'Modo Dark'
           TabOrder = 2
           OnClick = btnModoDarkClick
-          ExplicitTop = 13
-          ExplicitWidth = 179
         end
         object btnModoLight: TButton
           AlignWithMargins = True
@@ -1106,16 +1077,13 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           Caption = 'Modo Light'
           TabOrder = 3
           OnClick = btnModoLightClick
-          ExplicitLeft = 19
-          ExplicitTop = -11
-          ExplicitWidth = 179
         end
       end
     end
   end
   object TMSFNCChartDatabaseAdapter1: TTMSFNCChartDatabaseAdapter
     Left = 358
-    Top = 486
+    Top = 510
     Width = 26
     Height = 26
     Visible = True
@@ -1128,11 +1096,11 @@ object ChartDatabaseMainView: TChartDatabaseMainView
     Aggregates = <>
     Params = <>
     Left = 142
-    Top = 482
+    Top = 506
   end
   object DataSource1: TDataSource
     DataSet = ClientDataSet1
     Left = 225
-    Top = 482
+    Top = 506
   end
 end
