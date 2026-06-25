@@ -6,6 +6,7 @@ uses
   Winapi.Windows,
   Winapi.Messages,
   TypInfo,
+  System.IOUtils,
   System.SysUtils,
   System.Variants,
   System.Classes,
@@ -104,7 +105,6 @@ procedure TChartDatabaseVendasView.FormCreate(Sender: TObject);
 begin
   Self.PreenchercBoxChartType;
   Self.PreenchercBoxEsquemaCores;
-  TMSFNCChart1.Appearance.ColorScheme := TTMSFNCChartColorScheme(cBoxEsquemaCores.ItemIndex);
   Self.BuscarDados;
 end;
 
@@ -117,7 +117,7 @@ begin
   for LItem := Low(TTMSFNCChartSerieType) to High(TTMSFNCChartSerieType) do
     cBoxChartType.Items.Add(GetEnumName(TypeInfo(TTMSFNCChartSerieType), Integer(LItem)));
 
-  cBoxChartType.ItemIndex := Integer(TTMSFNCChartSerieType.ctLine);
+  cBoxChartType.ItemIndex := Integer(TTMSFNCChartSerieType.ctPie);
 end;
 
 procedure TChartDatabaseVendasView.PreenchercBoxEsquemaCores;
@@ -135,6 +135,10 @@ end;
 procedure TChartDatabaseVendasView.BuscarDados;
 begin
   TMSFNCChartDatabaseAdapter1.Active := False;
+  FDQuery1.Close;
+  FDConnection1.Connected := False;
+  FDConnection1.Params.Values['Database'] := TPath.Combine(ExtractFilePath(ParamStr(0)), '..\Data\vendas.db');
+  FDConnection1.Connected := True;
   FDQuery1.Open;
 end;
 
@@ -149,30 +153,27 @@ begin
     Exit;
   end;
 
-  //SETAMOS PARA FALSE PARA QUE NOS MESMO CRIEMOS AS SERIES
-  TMSFNCChartDatabaseAdapter1.AutoCreateSeries := True;
-  Self.ConfigChart;
+  TMSFNCChartDatabaseAdapter1.AutoCreateSeries := False;
+  TMSFNCChartDatabaseAdapter1.Source.Series.Clear;
 
-  //LIMPA TODAS AS SERIES DO ChartDatabaseAdapter
-//  TMSFNCChartDatabaseAdapter1.Source.Series.Clear;
-
-//  //ADICIONE AO ChartDatabaseAdapter A SERIE COM VALORES DO ANO PASSADO
-//  LSeriesItem := TMSFNCChartDatabaseAdapter1.Source.Series.Add;
-//  LSeriesItem.YValue := ;
-//  LSeriesItem.XValue := FDQuery1id_grupo.FieldName;
-//  LSeriesItem.XLabel := FDQuery1TotalVendas.FieldName;
+  LSeriesItem := TMSFNCChartDatabaseAdapter1.Source.Series.Add;
+  LSeriesItem.YValue := FDQuery1TotalVendas.FieldName;
+  LSeriesItem.XValue := FDQuery1id_grupo.FieldName;
+  LSeriesItem.XLabel := FDQuery1nome_grupo.FieldName;
 
   TMSFNCChartDatabaseAdapter1.Active := True;
+  Self.ConfigChart;
   lbStatusDataBase.Caption := 'Conectado';
 end;
 
 procedure TChartDatabaseVendasView.TMSFNCChartDatabaseAdapter1FieldsToSeries(Sender: TObject; AFields: TFields; ASeries: TTMSFNCChartSerie);
 begin
-//  ASeries.ChartType := TTMSFNCChartSerieType(cBoxChartType.ItemIndex);
-//  ASeries.Markers.Visible := ckMostrarMarcador.Checked;
-//  ASeries.Labels.Visible := ckMostrarLabels.Checked;
-//  ASeries.YValues.Title.Text := 'Total em vendas';
-//  ASeries.XValues.Title.Text := 'Dias vendidos';
+  ASeries.ChartType := TTMSFNCChartSerieType(cBoxChartType.ItemIndex);
+  ASeries.LegendText := 'Vendas por grupo';
+  ASeries.Markers.Visible := ckMostrarMarcador.Checked;
+  ASeries.Labels.Visible := ckMostrarLabels.Checked;
+  ASeries.YValues.Title.Text := 'Total em vendas';
+  ASeries.XValues.Title.Text := 'Grupos';
 end;
 
 procedure TChartDatabaseVendasView.btnAplicarAlteracoesClick(Sender: TObject);
@@ -183,7 +184,6 @@ end;
 procedure TChartDatabaseVendasView.ConfigChart;
 var
   LSerieChart: TTMSFNCChartSerie;
-  i: Integer;
 begin
   if not TMSFNCChartDatabaseAdapter1.Active then
   begin
@@ -192,30 +192,16 @@ begin
     Exit;
   end;
 
-  TMSFNCChart1.Appearance.ColorScheme := TTMSFNCChartColorScheme(cBoxEsquemaCores.ItemIndex);
-
-  for i := 0 to Pred(TMSFNCChart1.Series.Count) do
+  for var i := 0 to Pred(TMSFNCChart1.Series.Count) do
   begin
     LSerieChart := TMSFNCChart1.Series[i];
     LSerieChart.ChartType := TTMSFNCChartSerieType(cBoxChartType.ItemIndex);
-    LSerieChart.LegendText := LSerieChart.DataString;
+    LSerieChart.LegendText := 'Vendas por grupo';
     LSerieChart.Markers.Visible := ckMostrarMarcador.Checked;
     LSerieChart.Labels.Visible := ckMostrarLabels.Checked;
   end;
 
-  //INTERCEPTA A SERIE NO TMSFNCChart1 CASO QUEIRA FAZER ALGUMA ALTERACAO
-  //TAMBEM PODE SER CONFIGURADO NO EVENTO OnFieldsToSeries DO TMSFNCChartDatabaseAdapter
-//  LSerieChart := TMSFNCChart1.Series[0];
-//  LSerieChart.ChartType := TTMSFNCChartSerieType(cBoxChartType.ItemIndex);
-//  LSerieChart.LegendText := 'Ano passado';
-//  LSerieChart.Markers.Visible := ckMostrarMarcador.Checked;
-//  LSerieChart.Labels.Visible := ckMostrarLabels.Checked;
-//
-//  LSerieChart := TMSFNCChart1.Series[1];
-//  LSerieChart.ChartType := TTMSFNCChartSerieType(cBoxChartType.ItemIndex);
-//  LSerieChart.LegendText := 'Ano Atual';
-//  LSerieChart.Markers.Visible := ckMostrarMarcador.Checked;
-//  LSerieChart.Labels.Visible := ckMostrarLabels.Checked;
+  TMSFNCChart1.Appearance.ColorScheme := TTMSFNCChartColorScheme(cBoxEsquemaCores.ItemIndex);
 end;
 
 procedure TChartDatabaseVendasView.btnConfigurarGraficoClick(Sender: TObject);

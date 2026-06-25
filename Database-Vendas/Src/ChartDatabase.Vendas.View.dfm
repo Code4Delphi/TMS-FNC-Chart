@@ -92,7 +92,7 @@ object ChartDatabaseVendasView: TChartDatabaseVendasView
       Title.TextMargins.Top = 3
       Title.TextMargins.Right = 3
       Title.TextMargins.Bottom = 3
-      Title.Text = 'Relat'#243'rio de vendas por dia'
+      Title.Text = 'Relat'#243'rio de vendas por grupo'
       XAxis.Stroke.Kind = gskSolid
       XAxis.Height = 35.000000000000000000
       YAxis.Stroke.Kind = gskSolid
@@ -107,8 +107,6 @@ object ChartDatabaseVendasView: TChartDatabaseVendasView
       TabStop = False
       ParentColor = True
       TabOrder = 0
-      ExplicitLeft = 2
-      ExplicitTop = -2
       object TMSFNCChartDatabaseAdapter1: TTMSFNCChartDatabaseAdapter
         Left = 360
         Top = 508
@@ -156,7 +154,7 @@ object ChartDatabaseVendasView: TChartDatabaseVendasView
           Height = 30
           Cursor = crHandPoint
           Align = alTop
-          Caption = 'Conectar / desconectatar'
+          Caption = 'Conectar / desconectar'
           TabOrder = 0
           OnClick = btnAbrirClick
         end
@@ -355,7 +353,6 @@ object ChartDatabaseVendasView: TChartDatabaseVendasView
         'Database=C:\Code4D\Cursos\TMS\Utilitarios\TMS-FNC-Chart\Database' +
         '-Vendas\Data\vendas.db'
       'DriverID=SQLite')
-    Connected = True
     LoginPrompt = False
     Left = 76
     Top = 506
@@ -368,7 +365,8 @@ object ChartDatabaseVendasView: TChartDatabaseVendasView
       'nome_grupo,'
       'sum(valor_total) as TotalVendas'
       'from vendas'
-      'group by id_grupo')
+      'group by id_grupo, nome_grupo'
+      'order by id_grupo')
     Left = 154
     Top = 506
     object FDQuery1id_grupo: TIntegerField
