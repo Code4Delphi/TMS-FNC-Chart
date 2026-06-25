@@ -2,31 +2,31 @@ object ChartDatabaseMainView: TChartDatabaseMainView
   Left = 0
   Top = 0
   Caption = 'TMS FNC Chart - Database'
-  ClientHeight = 529
-  ClientWidth = 1085
+  ClientHeight = 723
+  ClientWidth = 581
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  Position = poScreenCenter
+  Position = poDesigned
   OnCreate = FormCreate
   TextHeight = 15
   object pnCorpo: TPanel
     Left = 0
     Top = 0
-    Width = 1085
-    Height = 529
+    Width = 581
+    Height = 723
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 1267
-    ExplicitHeight = 658
+    ExplicitWidth = 1085
+    ExplicitHeight = 529
     object TMSFNCChart1: TTMSFNCChart
       Left = 1
       Top = 1
-      Width = 925
-      Height = 527
+      Width = 579
+      Height = 624
       Appearance.ColorList = <
         item
           Color = 16105559
@@ -285,6 +285,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           XValues.Title.TextMargins.Bottom = 0
           XValues.Title.Text = 'X-Axis Series 1'
           XValues.Positions = [xpTop, xpCenter, xpBottom]
+          XValues.SmartLabels.MinLabelSpacing = 5.000000000000000000
           YGrid.Visible = True
           YValues.MajorUnit = 1.000000000000000000
           YValues.MajorUnitFont.Charset = DEFAULT_CHARSET
@@ -316,6 +317,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           YValues.Title.TextMargins.Bottom = 0
           YValues.Title.Text = 'Y-Axis Series 12344'
           YValues.Positions = [ypLeft, ypCenter, ypRight]
+          YValues.SmartLabels.MinLabelSpacing = 5.000000000000000000
           Crosshair.XTextStroke.Color = 16105559
           Crosshair.XTextFill.Color = 16105559
           Crosshair.XTextFont.Charset = DEFAULT_CHARSET
@@ -533,6 +535,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           XValues.Title.TextMargins.Bottom = 0
           XValues.Title.Text = 'X-Axis Series 2'
           XValues.Positions = []
+          XValues.SmartLabels.MinLabelSpacing = 5.000000000000000000
           YValues.MajorUnit = 1.000000000000000000
           YValues.MajorUnitFont.Charset = DEFAULT_CHARSET
           YValues.MajorUnitFont.Color = -1
@@ -563,6 +566,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           YValues.Title.TextMargins.Bottom = 0
           YValues.Title.Text = 'Y-Axis Series 2'
           YValues.Positions = []
+          YValues.SmartLabels.MinLabelSpacing = 5.000000000000000000
           Crosshair.XTextStroke.Color = 5644279
           Crosshair.XTextFill.Color = 5644279
           Crosshair.XTextFont.Charset = DEFAULT_CHARSET
@@ -780,6 +784,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           XValues.Title.TextMargins.Bottom = 0
           XValues.Title.Text = 'X-Axis Series 3'
           XValues.Positions = []
+          XValues.SmartLabels.MinLabelSpacing = 5.000000000000000000
           YValues.MajorUnit = 1.000000000000000000
           YValues.MajorUnitFont.Charset = DEFAULT_CHARSET
           YValues.MajorUnitFont.Color = -1
@@ -810,6 +815,7 @@ object ChartDatabaseMainView: TChartDatabaseMainView
           YValues.Title.TextMargins.Bottom = 0
           YValues.Title.Text = 'Y-Axis Series 3'
           YValues.Positions = []
+          YValues.SmartLabels.MinLabelSpacing = 5.000000000000000000
           Crosshair.XTextStroke.Color = 7936771
           Crosshair.XTextFill.Color = 7936771
           Crosshair.XTextFont.Charset = DEFAULT_CHARSET
@@ -848,176 +854,268 @@ object ChartDatabaseMainView: TChartDatabaseMainView
       DefaultLoadOptions.YValuesFormatString = '%.2f'
       DefaultLoadOptions.MaxYOffsetPercentage = 5.000000000000000000
       Align = alClient
+      ParentDoubleBuffered = False
+      DoubleBuffered = True
+      TabStop = False
+      ParentColor = True
       TabOrder = 0
-      ExplicitWidth = 1107
-      ExplicitHeight = 656
+      ExplicitTop = -2
     end
     object pnBotoes: TPanel
-      Left = 926
-      Top = 1
-      Width = 158
-      Height = 527
-      Align = alRight
+      Left = 1
+      Top = 625
+      Width = 579
+      Height = 97
+      Align = alBottom
+      BevelOuter = bvNone
       TabOrder = 1
-      ExplicitLeft = 930
-      object lbStatusDataBase: TLabel
-        AlignWithMargins = True
-        Left = 4
-        Top = 50
-        Width = 150
-        Height = 15
-        Align = alTop
-        Alignment = taCenter
-        Caption = 'Desconectado'
-        ExplicitWidth = 75
-      end
-      object Label1: TLabel
-        AlignWithMargins = True
-        Left = 6
-        Top = 118
-        Width = 148
-        Height = 15
-        Margins.Left = 5
-        Margins.Top = 50
-        Align = alTop
-        Caption = 'ChartType'
-        ExplicitWidth = 54
-      end
-      object Label2: TLabel
-        AlignWithMargins = True
-        Left = 6
-        Top = 165
-        Width = 148
-        Height = 15
-        Margins.Left = 5
-        Align = alTop
-        Caption = 'Esquema de cores'
-        ExplicitWidth = 95
-      end
-      object btnAbrir: TBitBtn
-        AlignWithMargins = True
-        Left = 4
-        Top = 4
-        Width = 150
-        Height = 40
-        Align = alTop
-        Caption = 'Conectar / desconectatar'
+      object Panel3: TPanel
+        Left = 0
+        Top = 0
+        Width = 147
+        Height = 97
+        Align = alLeft
+        BevelOuter = bvNone
         TabOrder = 0
-        OnClick = btnAbrirClick
-        ExplicitLeft = 6
+        ExplicitHeight = 94
+        object lbStatusDataBase: TLabel
+          AlignWithMargins = True
+          Left = 3
+          Top = 39
+          Width = 141
+          Height = 15
+          Align = alTop
+          Alignment = taCenter
+          Caption = 'Desconectado'
+          ExplicitTop = 49
+          ExplicitWidth = 75
+        end
+        object btnAbrir: TBitBtn
+          AlignWithMargins = True
+          Left = 3
+          Top = 3
+          Width = 141
+          Height = 30
+          Cursor = crHandPoint
+          Align = alTop
+          Caption = 'Conectar / desconectatar'
+          TabOrder = 0
+          OnClick = btnAbrirClick
+        end
       end
-      object cBoxChartType: TComboBox
-        AlignWithMargins = True
-        Left = 4
-        Top = 136
-        Width = 150
-        Height = 23
-        Margins.Top = 0
-        Align = alTop
-        Style = csDropDownList
-        DropDownCount = 19
+      object Panel4: TPanel
+        Left = 147
+        Top = 0
+        Width = 185
+        Height = 97
+        Align = alLeft
+        BevelOuter = bvNone
         TabOrder = 1
+        ExplicitLeft = 150
+        ExplicitTop = 6
+        object lbChartType: TLabel
+          AlignWithMargins = True
+          Left = 5
+          Top = 1
+          Width = 177
+          Height = 15
+          Margins.Left = 5
+          Margins.Top = 1
+          Margins.Bottom = 2
+          Align = alTop
+          Caption = 'ChartType'
+          ExplicitTop = 3
+          ExplicitWidth = 54
+        end
+        object lbEsquemaCores: TLabel
+          AlignWithMargins = True
+          Left = 5
+          Top = 44
+          Width = 177
+          Height = 15
+          Margins.Left = 5
+          Margins.Top = 2
+          Margins.Bottom = 2
+          Align = alTop
+          Caption = 'Esquema de cores'
+          ExplicitTop = 24
+          ExplicitWidth = 95
+        end
+        object cBoxChartType: TComboBox
+          AlignWithMargins = True
+          Left = 3
+          Top = 18
+          Width = 179
+          Height = 23
+          Margins.Top = 0
+          Margins.Bottom = 1
+          Align = alTop
+          Style = csDropDownList
+          DropDownCount = 19
+          TabOrder = 0
+          OnChange = btnAplicarAlteracoesClick
+          ExplicitTop = 21
+        end
+        object cBoxEsquemaCores: TComboBox
+          AlignWithMargins = True
+          Left = 3
+          Top = 61
+          Width = 179
+          Height = 23
+          Margins.Top = 0
+          Margins.Bottom = 1
+          Align = alTop
+          Style = csDropDownList
+          DropDownCount = 19
+          TabOrder = 1
+          OnChange = btnAplicarAlteracoesClick
+          ExplicitLeft = 4
+          ExplicitTop = 183
+          ExplicitWidth = 150
+        end
       end
-      object btnAplicarAlteracoes: TBitBtn
-        AlignWithMargins = True
-        Left = 4
-        Top = 258
-        Width = 150
-        Height = 40
-        Align = alTop
-        Caption = 'Aplicar altera'#231#245'es'
+      object Panel5: TPanel
+        Left = 332
+        Top = 0
+        Width = 123
+        Height = 97
+        Align = alLeft
+        BevelOuter = bvNone
         TabOrder = 2
-        OnClick = btnAplicarAlteracoesClick
+        ExplicitLeft = 338
+        ExplicitHeight = 116
+        object btnAplicarAlteracoes: TBitBtn
+          AlignWithMargins = True
+          Left = 3
+          Top = 3
+          Width = 117
+          Height = 22
+          Cursor = crHandPoint
+          Align = alTop
+          Caption = 'Aplicar altera'#231#245'es'
+          TabOrder = 0
+          OnClick = btnAplicarAlteracoesClick
+        end
+        object ckMostrarMarcador: TCheckBox
+          AlignWithMargins = True
+          Left = 3
+          Top = 54
+          Width = 117
+          Height = 17
+          Cursor = crHandPoint
+          Margins.Bottom = 1
+          Align = alTop
+          Caption = 'Mostrar marcador'
+          Checked = True
+          State = cbChecked
+          TabOrder = 1
+          ExplicitLeft = 6
+          ExplicitTop = 57
+          ExplicitWidth = 179
+        end
+        object ckMostrarLabels: TCheckBox
+          AlignWithMargins = True
+          Left = 3
+          Top = 31
+          Width = 117
+          Height = 17
+          Cursor = crHandPoint
+          Align = alTop
+          Caption = 'Mostrar label'
+          Checked = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clChartreuse
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          State = cbChecked
+          TabOrder = 2
+          ExplicitLeft = 6
+          ExplicitTop = 57
+          ExplicitWidth = 179
+        end
       end
-      object ckMostrarMarcador: TCheckBox
-        AlignWithMargins = True
-        Left = 4
-        Top = 212
-        Width = 150
-        Height = 17
-        Align = alTop
-        Caption = 'Mostrar marcador'
-        Checked = True
-        State = cbChecked
+      object Panel6: TPanel
+        Left = 455
+        Top = 0
+        Width = 124
+        Height = 97
+        Align = alLeft
+        BevelOuter = bvNone
         TabOrder = 3
-      end
-      object ckMostrarLabels: TCheckBox
-        AlignWithMargins = True
-        Left = 4
-        Top = 235
-        Width = 150
-        Height = 17
-        Align = alTop
-        Caption = 'Mostrar label'
-        Checked = True
-        State = cbChecked
-        TabOrder = 4
-      end
-      object cBoxEsquemaCores: TComboBox
-        AlignWithMargins = True
-        Left = 4
-        Top = 183
-        Width = 150
-        Height = 23
-        Margins.Top = 0
-        Align = alTop
-        Style = csDropDownList
-        DropDownCount = 19
-        TabOrder = 5
-      end
-      object btnConfigurarGrafico: TBitBtn
-        AlignWithMargins = True
-        Left = 4
-        Top = 483
-        Width = 150
-        Height = 40
-        Align = alBottom
-        Caption = 'Configurar gr'#225'fico'
-        TabOrder = 6
-        OnClick = btnConfigurarGraficoClick
-        ExplicitTop = 612
-      end
-      object btnSalvarGrafico: TButton
-        AlignWithMargins = True
-        Left = 4
-        Top = 452
-        Width = 150
-        Height = 25
-        Align = alBottom
-        Caption = 'Salvar gr'#225'fico'
-        TabOrder = 7
-        OnClick = btnSalvarGraficoClick
-        ExplicitTop = 581
-      end
-      object btnModoDark: TButton
-        AlignWithMargins = True
-        Left = 4
-        Top = 421
-        Width = 150
-        Height = 25
-        Align = alBottom
-        Caption = 'Modo Dark'
-        TabOrder = 8
-        OnClick = btnModoDarkClick
-        ExplicitTop = 550
-      end
-      object btnModoLight: TButton
-        AlignWithMargins = True
-        Left = 4
-        Top = 390
-        Width = 150
-        Height = 25
-        Align = alBottom
-        Caption = 'Modo Light'
-        TabOrder = 9
-        OnClick = btnModoLightClick
-        ExplicitTop = 519
+        ExplicitHeight = 94
+        object btnConfigurarGrafico: TBitBtn
+          AlignWithMargins = True
+          Left = 3
+          Top = 72
+          Width = 118
+          Height = 22
+          Cursor = crHandPoint
+          Margins.Top = 0
+          Margins.Bottom = 1
+          Align = alTop
+          Caption = 'Configurar gr'#225'fico'
+          TabOrder = 0
+          OnClick = btnConfigurarGraficoClick
+          ExplicitLeft = 6
+          ExplicitTop = 92
+          ExplicitWidth = 179
+        end
+        object btnSalvarGrafico: TButton
+          AlignWithMargins = True
+          Left = 3
+          Top = 49
+          Width = 118
+          Height = 22
+          Cursor = crHandPoint
+          Margins.Top = 0
+          Margins.Bottom = 1
+          Align = alTop
+          Caption = 'Salvar gr'#225'fico'
+          TabOrder = 1
+          OnClick = btnSalvarGraficoClick
+          ExplicitTop = 40
+          ExplicitWidth = 179
+        end
+        object btnModoDark: TButton
+          AlignWithMargins = True
+          Left = 3
+          Top = 26
+          Width = 118
+          Height = 22
+          Cursor = crHandPoint
+          Margins.Top = 0
+          Margins.Bottom = 1
+          Align = alTop
+          Caption = 'Modo Dark'
+          TabOrder = 2
+          OnClick = btnModoDarkClick
+          ExplicitTop = 13
+          ExplicitWidth = 179
+        end
+        object btnModoLight: TButton
+          AlignWithMargins = True
+          Left = 3
+          Top = 3
+          Width = 118
+          Height = 22
+          Cursor = crHandPoint
+          Margins.Bottom = 1
+          Align = alTop
+          Caption = 'Modo Light'
+          TabOrder = 3
+          OnClick = btnModoLightClick
+          ExplicitLeft = 19
+          ExplicitTop = -11
+          ExplicitWidth = 179
+        end
       end
     end
   end
   object TMSFNCChartDatabaseAdapter1: TTMSFNCChartDatabaseAdapter
-    Left = 898
-    Top = 61
+    Left = 358
+    Top = 486
     Width = 26
     Height = 26
     Visible = True
@@ -1029,12 +1127,12 @@ object ChartDatabaseMainView: TChartDatabaseMainView
   object ClientDataSet1: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 656
-    Top = 58
+    Left = 142
+    Top = 482
   end
   object DataSource1: TDataSource
     DataSet = ClientDataSet1
-    Left = 755
-    Top = 59
+    Left = 225
+    Top = 482
   end
 end

@@ -34,15 +34,19 @@ type
     TMSFNCChartDatabaseAdapter1: TTMSFNCChartDatabaseAdapter;
     TMSFNCChart1: TTMSFNCChart;
     pnBotoes: TPanel;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    Panel6: TPanel;
     btnAbrir: TBitBtn;
     lbStatusDataBase: TLabel;
-    Label1: TLabel;
+    lbChartType: TLabel;
+    lbEsquemaCores: TLabel;
     cBoxChartType: TComboBox;
+    cBoxEsquemaCores: TComboBox;
     btnAplicarAlteracoes: TBitBtn;
     ckMostrarMarcador: TCheckBox;
     ckMostrarLabels: TCheckBox;
-    Label2: TLabel;
-    cBoxEsquemaCores: TComboBox;
     btnConfigurarGrafico: TBitBtn;
     btnSalvarGrafico: TButton;
     btnModoDark: TButton;
@@ -60,6 +64,7 @@ type
     function GetNumeroAleatorio: Double;
     procedure PreenchercBoxChartType;
     procedure PreenchercBoxEsquemaCores;
+    procedure ConfigTemaLabels(const ATemaDark: Boolean = False);
   public
 
   end;
@@ -231,6 +236,20 @@ begin
   end;
 end;
 
+procedure TChartDatabaseMainView.ConfigTemaLabels(const ATemaDark: Boolean = False);
+begin
+  lbChartType.Font.Color := clWindowText;
+  lbEsquemaCores.Font.Color := clWindowText;
+  lbStatusDataBase.Font.Color := clWindowText;
+
+  if ATemaDark then
+  begin
+    lbChartType.Font.Color := clWindow;
+    lbEsquemaCores.Font.Color := clWindow;
+     lbStatusDataBase.Font.Color := clWindow;
+  end;
+end;
+
 procedure TChartDatabaseMainView.btnModoLightClick(Sender: TObject);
 var
   LSerieChart: TTMSFNCChartSerie;
@@ -247,6 +266,8 @@ begin
     LSerieChart.Labels.Fill.Color := clWhite;
     LSerieChart.Labels.Font.Color := clWindowText;
   end;
+
+  Self.ConfigTemaLabels;
 end;
 
 procedure TChartDatabaseMainView.btnModoDarkClick(Sender: TObject);
@@ -258,13 +279,17 @@ begin
   TMSFNCChart1.Appearance.GlobalFont.Color := clWhite;
   TMSFNCChart1.Fill.Color := $00403A34;
   TMSFNCChart1.Legend.Fill.Color := $00292521;
+  TMSFNCChart1.Legend.Font.Color := clWindowText;
 
   for var i := 0 to pred(TMSFNCChart1.Series.Count) do
   begin
     LSerieChart := TMSFNCChart1.Series[i];
     LSerieChart.Labels.Fill.Color := $00bcb7b3;
     LSerieChart.Labels.Font.Color := clWindowText;
+    TMSFNCChart1.Legend.Font.Color := clWindow;
   end;
+
+  Self.ConfigTemaLabels(True);
 end;
 
 end.
