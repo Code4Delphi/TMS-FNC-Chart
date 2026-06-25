@@ -24,7 +24,7 @@ uses
   VCL.TMSFNCCustomComponent,
   VCL.TMSFNCChartDatabaseAdapter,
   Vcl.StdCtrls,
-  Vcl.Buttons;
+  Vcl.Buttons, Vcl.Grids, Vcl.DBGrids;
 
 type
   TChartDatabaseMainView = class(TForm)
@@ -104,7 +104,7 @@ begin
   for LItem := Low(TTMSFNCChartColorScheme) to High(TTMSFNCChartColorScheme) do
     cBoxEsquemaCores.Items.Add(GetEnumName(TypeInfo(TTMSFNCChartColorScheme), Integer(LItem)));
 
-  cBoxEsquemaCores.ItemIndex := Integer(TTMSFNCChartColorScheme.ccsColorList);
+  cBoxEsquemaCores.ItemIndex := Integer(TTMSFNCChartColorScheme.ccsExcel);
 end;
 
 procedure TChartDatabaseMainView.PreencherDataset;

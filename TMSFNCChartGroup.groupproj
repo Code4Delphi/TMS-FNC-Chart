@@ -9,6 +9,9 @@
         <Projects Include="Database\TMSFNCChartDatabase.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Database-Vendas\TMSFNCChartDatabaseVendas.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -35,14 +38,23 @@
     <Target Name="TMSFNCChartDatabase:Make">
         <MSBuild Projects="Database\TMSFNCChartDatabase.dproj" Targets="Make"/>
     </Target>
+    <Target Name="TMSFNCChartDatabaseVendas">
+        <MSBuild Projects="Database-Vendas\TMSFNCChartDatabaseVendas.dproj"/>
+    </Target>
+    <Target Name="TMSFNCChartDatabaseVendas:Clean">
+        <MSBuild Projects="Database-Vendas\TMSFNCChartDatabaseVendas.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TMSFNCChartDatabaseVendas:Make">
+        <MSBuild Projects="Database-Vendas\TMSFNCChartDatabaseVendas.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="TMSFNCChartArray;TMSFNCChartDatabase"/>
+        <CallTarget Targets="TMSFNCChartArray;TMSFNCChartDatabase;TMSFNCChartDatabaseVendas"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="TMSFNCChartArray:Clean;TMSFNCChartDatabase:Clean"/>
+        <CallTarget Targets="TMSFNCChartArray:Clean;TMSFNCChartDatabase:Clean;TMSFNCChartDatabaseVendas:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="TMSFNCChartArray:Make;TMSFNCChartDatabase:Make"/>
+        <CallTarget Targets="TMSFNCChartArray:Make;TMSFNCChartDatabase:Make;TMSFNCChartDatabaseVendas:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
