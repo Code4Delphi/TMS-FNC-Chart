@@ -26,7 +26,7 @@ O componente é multiplataforma e pode ser utilizado em aplicações VCL, FireMo
 ```
 
 ## ▶️ Vídeos de demonstração do projeto no Youtube
-[Crie gráficos incríveis com TMS FNC Chart](https://www.youtube.com/watch?v=-DQEvTOJp2U)
+[Crie gráficos incríveis com TMS FNC Chart](https://www.youtube.com/watch?v=-DQEvTOJp2U&list=PLLHSz4dOnnN2Xlf7OX47cF20gbmz9-9z0)
 
 ## 📈 Demonstrações
 - Editor com alta resolução (high DPI) em tempo de design e tempo de execução, se adaptando ao tema habilitad IDE
